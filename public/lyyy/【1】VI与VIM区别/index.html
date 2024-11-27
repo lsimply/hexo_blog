@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="【1】VI与VIM区别它们都是多模式编辑器，不同的是vim 是vi的升级版本，它不仅兼容vi的所有指令，而且还有一些新的特性在里面。 vim的这些优势主要体现在以下几个方面： ① 多级撤消 我们知道在vi里，按 u只能撤消上次命令，而在vim里可以无限制的撤消。 ② 易用性 vi只能运行于unix中，而vim不仅可以运行于unix,windows ,mac等多操作平台。 ③ 语法加亮 vim可以用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【1】VI与VIM区别">
+<meta property="og:url" content="http://example.com/lyyy/%E3%80%901%E3%80%91VI%E4%B8%8EVIM%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="【1】VI与VIM区别它们都是多模式编辑器，不同的是vim 是vi的升级版本，它不仅兼容vi的所有指令，而且还有一些新的特性在里面。 vim的这些优势主要体现在以下几个方面： ① 多级撤消 我们知道在vi里，按 u只能撤消上次命令，而在vim里可以无限制的撤消。 ② 易用性 vi只能运行于unix中，而vim不仅可以运行于unix,windows ,mac等多操作平台。 ③ 语法加亮 vim可以用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/663719734ceeaf96befe4d25c25315b1.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8fa17c55ea723b772408a7205b49752f.png">
+<meta property="article:published_time" content="2024-10-30T12:22:47.009Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.648Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/663719734ceeaf96befe4d25c25315b1.png">
+  
+  
+  
+  <title>【1】VI与VIM区别 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【1】VI与VIM区别"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-30 20:22" pubdate>
+          2024年10月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【1】VI与VIM区别</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="【1】VI与VIM区别"><a href="#【1】VI与VIM区别" class="headerlink" title="【1】VI与VIM区别"></a><strong>【1】VI与VIM区别</strong></h3><p>它们都是多模式编辑器，不同的是vim 是vi的升级版本，它不仅兼容vi的所有指令，而且还有一些新的特性在里面。</p>
+<p><strong>vim的这些优势主要体现在以下几个方面：</strong></p>
+<p>① 多级撤消</p>
+<p>我们知道在vi里，按 u只能撤消上次命令，而在vim里可以无限制的撤消。</p>
+<p>② 易用性</p>
+<p>vi只能运行于unix中，而vim不仅可以运行于unix,windows ,mac等多操作平台。</p>
+<p>③ 语法加亮</p>
+<p>vim可以用不同的颜色来加亮你的代码。</p>
+<p>④ 可视化操作</p>
+<p>就是说vim不仅可以在终端运行，也可以运行于x window、 mac os、 windows。</p>
+<p>⑤ 对vi的完全兼容</p>
+<p>某些情况下，你可以把vim当成vi来使用。</p>
+<p>vi和vim都是Linux中的编辑器，不同的是vim比较高级，可以视为vi的升级版本。vi使用于文本编辑，但是vim更适用于coding。</p>
+<hr>
+<h3 id="【2】VI命令"><a href="#【2】VI命令" class="headerlink" title="【2】VI命令"></a><strong>【2】VI命令</strong></h3><h4 id="vi有3个模式"><a href="#vi有3个模式" class="headerlink" title="vi有3个模式"></a><strong>vi有3个模式</strong></h4><ul>
+<li>命令行模式 （command mode&#x2F;一般模式）</li>
+<li>文本输入模式 （input mode&#x2F;编辑模式）</li>
+<li>末行模式 （last line mode&#x2F;指令列命令模式）。</li>
+</ul>
+<h4 id="①-命令行模式-（command-mode-一般模式）"><a href="#①-命令行模式-（command-mode-一般模式）" class="headerlink" title="① 命令行模式 （command mode&#x2F;一般模式）"></a><strong>① 命令行模式 （command mode&#x2F;一般模式）</strong></h4><p>任何时候，不管用户处于何种模式，只要按一下“ESC”键，即可使Vi进入命令行模式。我们在shell环境（提示符为$）下输入启动Vi命令，进入编辑器时，也是处于该模式下。<br>　　<br>在该模式下，用户可以输入各种合法的Vi命令，用于管理自己的文档。此时从键盘上输入的任何字符都被当做编辑命令来解释，若输入的字符是合法的Vi命令，则Vi在接受用户命令之后完成相应的动作。但需注意的是，所输入的命令并不在屏幕上显示出来。若输入的字符不是Vi的合法命令，Vi会响铃报警。</p>
+<hr>
+<h4 id="②-文本输入模式-（input-mode-编辑模式）"><a href="#②-文本输入模式-（input-mode-编辑模式）" class="headerlink" title="② 文本输入模式 （input mode&#x2F;编辑模式）"></a><strong>② 文本输入模式 （input mode&#x2F;编辑模式）</strong></h4><p>在命令模式下输入插入命令i(insert)、附加命令a(append)、打开命令o(open)、修改命令c(change)、取代命令r或替换命令s都可以进入文本输入模式。</p>
+<p>在该模式下，用户输入的任何字符都被Vi当做文件内容保存起来，并将其显示在屏幕上。在文本输入过程中，若想回到命令模式下，按”ESC”键即可。</p>
+<hr>
+<h4 id="③-末行模式-（last-line-mode-指令列命令模式）"><a href="#③-末行模式-（last-line-mode-指令列命令模式）" class="headerlink" title="③ 末行模式 （last line mode&#x2F;指令列命令模式）"></a><strong>③ 末行模式 （last line mode&#x2F;指令列命令模式）</strong></h4><p>末行模式也称ex转义模式。</p>
+<p>Vi和Ex编辑器的功能是相同的，二者主要区别是用户界面。</p>
+<p>在Vi中，命令通常是单个键，例如i、a、o等；而在Ex中，命令是以按回车键结束的正文行。Vi有一个专门的“转义”命令，可访问很多面向行的Ex命令。</p>
+<p>在命令模式下，用户按<code>“:”</code>键即可进入末行模式下，此时Vi会在显示窗口的最后一行（通常也是屏幕的最后一行）显示一个<code>“:”</code>作为末行模式的提示符，等待用户输入命令。</p>
+<p>多数文件管理命令都是在此模式下执行的（如把编辑缓冲区的内容写到文件中等）。末行命令执行完后，Vi自动回到命令模式。</p>
+<hr>
+<h3 id="【3】VIM命令"><a href="#【3】VIM命令" class="headerlink" title="【3】VIM命令"></a><strong>【3】VIM命令</strong></h3><h4 id="vim一共有4个模式："><a href="#vim一共有4个模式：" class="headerlink" title="vim一共有4个模式："></a><strong>vim一共有4个模式：</strong></h4><ol>
+<li>正常模式 (Normal-mode)</li>
+<li>插入模式 (Insert-mode)</li>
+<li>命令模式 (Command-mode)</li>
+<li>可视模式 (Visual-mode)</li>
+</ol>
+<hr>
+<h4 id="①-正常模式"><a href="#①-正常模式" class="headerlink" title="① 正常模式"></a><strong>① 正常模式</strong></h4><p>启动vim后默认处于正常模式。不论位于什么模式，按下<code>&lt;Esc&gt;</code>键(有时需要按两下）都会进入正常模式。</p>
+<h4 id="②-插入模式"><a href="#②-插入模式" class="headerlink" title="② 插入模式"></a><strong>② 插入模式</strong></h4><p>在正常模式中按下i, I, a, A等键，会进入插入模式。</p>
+<p>现在只用记住按<code>i</code>键会进行插入模式。在插入模式中，击键时会写入相应的字符。</p>
+<h4 id="③-命令模式"><a href="#③-命令模式" class="headerlink" title="③ 命令模式"></a><strong>③ 命令模式</strong></h4><p>在正常模式中，按下<code>:</code>（英文冒号）键，会进入命令模式。</p>
+<p>在命令模式中可以执行一些输入并执行一些vim或插件提供的指令，就像在shell里一样。这些指令包括设置环境、文件操作、调用某个功能等等。</p>
+<p>常用的命令有：q（退出）、q!（强制退出）、w（保存）、wq（保存并退出）。</p>
+<h4 id="④-可视模式"><a href="#④-可视模式" class="headerlink" title="④ 可视模式"></a><strong>④ 可视模式</strong></h4><p>在正常模式中按下v, V, <code>&lt;Ctrl&gt;+v</code>，可以进入可视模式。</p>
+<p>可视模式中的操作有点像拿鼠标进行操作，选择文本的时候有一种鼠标选择的即视感，有时候会很方便。</p>
+<hr>
+<h4 id="打开文件、保存、关闭文件-vim命令模式下使用"><a href="#打开文件、保存、关闭文件-vim命令模式下使用" class="headerlink" title="打开文件、保存、关闭文件(vim命令模式下使用)"></a><strong>打开文件、保存、关闭文件(vim命令模式下使用)</strong></h4><p>命令的使用请先按ESC进入命令模式！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim filename        //打开filename文件 </span><br><span class="line"></span><br><span class="line">:w     	            //保存文件 </span><br><span class="line">:w vpser.net       //保存至vpser.net文件 </span><br><span class="line">:q                //退出编辑器，如果文件已修改请使用下面的命令 </span><br><span class="line">:q!              //退出编辑器，且不保存 </span><br><span class="line">:wq            //退出编辑器，且保存文件 </span><br><span class="line">:x			  //退出编辑器，且保存文件 </span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+
+<p>修改：Insert键</p>
+<hr>
+<p><strong>插入文本或行(vim命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a        //在当前光标位置的右边添加文本 </span><br><span class="line">i       //在当前光标位置的左边添加文本 </span><br><span class="line">A       //在当前行的末尾位置添加文本 </span><br><span class="line">I      //在当前行的开始处添加文本(非空字符的行首) </span><br><span class="line">O      //在当前行的上面新建一行 </span><br><span class="line">o     //在当前行的下面新建一行 </span><br><span class="line">R     //替换(覆盖)当前光标位置及后面的若干文本 </span><br><span class="line">J    //合并光标所在行及下一行为一行(依然在命令模式) </span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="⑤-VIM下解决文本格式问题"><a href="#⑤-VIM下解决文本格式问题" class="headerlink" title="⑤ VIM下解决文本格式问题"></a><strong>⑤ VIM下解决文本格式问题</strong></h4><p>脚本文件保存时使用了DOS格式，Linux中可能会看到这样的错误：<code>/bin/sh^M：损坏的解释器: 没有那个文件或目录</code></p>
+<p>使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=VIM%E5%91%BD%E4%BB%A4&spm=1001.2101.3001.7020">VIM命令</a>，进入命令行模式，执行如下操作即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:set ff=unix</span><br><span class="line">:wq</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="【4】VIM快捷键使用"><a href="#【4】VIM快捷键使用" class="headerlink" title="【4】VIM快捷键使用"></a><strong>【4】VIM快捷键使用</strong></h3><h4 id="①-删除光标当前行"><a href="#①-删除光标当前行" class="headerlink" title="① 删除光标当前行"></a><strong>① 删除光标当前行</strong></h4><p>正常模式下使用<code>dd</code>命令。</p>
+<p><strong>其他快捷键操作参考如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+u：向文件首翻半屏；</span><br><span class="line">Ctrl+d：向文件尾翻半屏；</span><br><span class="line">Ctrl+f：向文件尾翻一屏；</span><br><span class="line">Ctrl+b：向文件首翻一屏；</span><br><span class="line">Esc：从编辑模式切换到命令模式；</span><br><span class="line">ZZ：命令模式下保存当前文件所做的修改后退出vi；</span><br><span class="line">:行号：光标跳转到指定行的行首；</span><br><span class="line">:$：光标跳转到最后一行的行首；</span><br><span class="line">x或X：删除一个字符，x删除光标后的，而X删除光标前的；</span><br><span class="line">D：删除从当前光标到光标所在行尾的全部字符；</span><br><span class="line">dd：删除光标行正行内容；</span><br><span class="line">ndd：删除当前行及其后n-1行；</span><br><span class="line">nyy：将当前行及其下n行的内容保存到寄存器？中，其中？为一个字母，n为一个数字；</span><br><span class="line">p：粘贴文本操作，用于将缓存区的内容粘贴到当前光标所在位置的下方；</span><br><span class="line">P：粘贴文本操作，用于将缓存区的内容粘贴到当前光标所在位置的上方；</span><br><span class="line">/字符串：文本查找操作，用于从当前光标所在位置开始向文件尾部查找指定字符串的内容，查找的字符串会被加亮显示；</span><br><span class="line">？name：文本查找操作，用于从当前光标所在位置开始向文件头部查找指定字符串的内容，查找的字符串会被加亮显示；</span><br><span class="line">a，bs/F/T：替换文本操作，用于在第a行到第b行之间，将F字符串换成T字符串。其中，“s/”表示进行替换操作；</span><br><span class="line">a：在当前字符后添加文本；</span><br><span class="line">A：在行末添加文本；</span><br><span class="line">i：在当前字符前插入文本；</span><br><span class="line">I：在行首插入文本；</span><br><span class="line">o：在当前行后面插入一空行；</span><br><span class="line">O：在当前行前面插入一空行；</span><br><span class="line">:wq：在命令模式下，执行存盘退出操作；</span><br><span class="line">:w：在命令模式下，执行存盘操作；</span><br><span class="line">:w！：在命令模式下，执行强制存盘操作；</span><br><span class="line">:q：在命令模式下，执行退出vi操作；</span><br><span class="line">:q！：在命令模式下，执行强制退出vi操作；</span><br><span class="line">:e文件名：在命令模式下，打开并编辑指定名称的文件；</span><br><span class="line">:n：在命令模式下，如果同时打开多个文件，则继续编辑下一个文件；</span><br><span class="line">:f：在命令模式下，用于显示当前的文件名、光标所在行的行号以及显示比例；</span><br><span class="line">:set number：在命令模式下，用于在最左端显示行号；</span><br><span class="line">:set nonumber：在命令模式下，用于在最左端不显示行号；</span><br><span class="line"></span><br><span class="line">12345678910111213141516171819202122232425262728293031323334</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="②-vim快速替换文本"><a href="#②-vim快速替换文本" class="headerlink" title="② vim快速替换文本"></a><strong>② vim快速替换文本</strong></h4><p>语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:[addr]s/源字符串/目的字符串/[option]</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>全局替换命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:%s/源字符串/目的字符串/g</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p><code>s </code>表示替换操作,<code>[addr]</code> 表示检索范围，省略时表示当前行，如下实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;1,20&quot; ：表示从第1行到20行；</span><br><span class="line">&quot;%&quot;：表示整个文件，同&quot;1,$&quot;；</span><br><span class="line">&quot;. ,$&quot; ：从当前行到文件尾；</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<p><code>[option] :</code> 表示操作类型:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g 表示全局替换; </span><br><span class="line">c 表示进行确认</span><br><span class="line">p 表示替代结果逐行显示（Ctrl + L恢复屏幕）;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<p>省略option时仅对每行第一个匹配串进行替换;如果在源字符串和目的字符串中出现特殊字符，需要用”\”转义 如 \t。</p>
+<hr>
+<h4 id="③-撤销与恢复"><a href="#③-撤销与恢复" class="headerlink" title="③ 撤销与恢复"></a><strong>③ 撤销与恢复</strong></h4><p>撤销快捷键为u,在窗口模式下按u则会撤销上一步操作。</p>
+<p>恢复撤销：Ctrl + r</p>
+<h4 id="④-搜索与取消高亮"><a href="#④-搜索与取消高亮" class="headerlink" title="④ 搜索与取消高亮"></a>④ 搜索与取消高亮</h4><p>正常模式下，使用<code>/</code>会对输入的字符进行全局搜索并高亮显示：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/663719734ceeaf96befe4d25c25315b1.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>这时使用n会跳到下一个匹配的字符处。但是关闭文件重新打开仍旧提示高亮，如何取消呢？命令模式下使用<code>:noh</code>命令，如下所示：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/8fa17c55ea723b772408a7205b49752f.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h4 id="vim显示行号"><a href="#vim显示行号" class="headerlink" title="vim显示行号"></a>vim显示行号</h4><p>命令行模式下（esc进入命令行模式），使用如下命令,然后回车</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:<span class="keyword">set</span> number</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【1】VI与VIM区别</div>
+      <div>http://example.com/lyyy/【1】VI与VIM区别/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/%E5%9C%A8%20Nginx%20%E7%9A%84%20location%20%E9%85%8D%E7%BD%AE%E4%B8%ADpath%E8%B7%AF%E5%BE%84%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A/" title="在 Nginx 的 location 配置中path路径一篇搞定">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在 Nginx 的 location 配置中path路径一篇搞定</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8(%E8%B6%85%E8%AF%A6%E7%BB%86%E7%89%88)/" title="Linux命令大全(超详细版)">
+                        <span class="hidden-mobile">Linux命令大全(超详细版)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

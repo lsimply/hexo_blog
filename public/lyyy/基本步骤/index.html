@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="USDT（Tether）的API开发主要是围绕加密货币交易、钱包管理、以及区块链交互等内容进行的。你可以使用不同的区块链平台（如以太坊、Tron）来进行USDT的开发，这涉及到对这些区块链的API或SDK进行操作。 通常有以下几种场景：  钱包管理： 使用API创建、管理USDT钱包，获取余额，或进行转账交易。 交易： 与加密货币交易所的API对接，进行买卖USDT的操作。 区块链交互： 通过区块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本步骤">
+<meta property="og:url" content="http://example.com/lyyy/%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="USDT（Tether）的API开发主要是围绕加密货币交易、钱包管理、以及区块链交互等内容进行的。你可以使用不同的区块链平台（如以太坊、Tron）来进行USDT的开发，这涉及到对这些区块链的API或SDK进行操作。 通常有以下几种场景：  钱包管理： 使用API创建、管理USDT钱包，获取余额，或进行转账交易。 交易： 与加密货币交易所的API对接，进行买卖USDT的操作。 区块链交互： 通过区块">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-08T16:12:21.495Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.617Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>基本步骤 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基本步骤"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-09 00:12" pubdate>
+          2024年9月9日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">基本步骤</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>USDT（Tether）的API开发主要是围绕加密货币交易、钱包管理、以及区块链交互等内容进行的。你可以使用不同的区块链平台（如以太坊、Tron）来进行USDT的开发，这涉及到对这些区块链的API或SDK进行操作。</p>
+<p>通常有以下几种场景：</p>
+<ol>
+<li><strong>钱包管理：</strong> 使用API创建、管理USDT钱包，获取余额，或进行转账交易。</li>
+<li><strong>交易：</strong> 与加密货币交易所的API对接，进行买卖USDT的操作。</li>
+<li><strong>区块链交互：</strong> 通过区块链平台（如以太坊、Tron）的API来查询USDT相关的交易信息，或者发送交易。</li>
+</ol>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ol>
+<li><p><strong>选择区块链网络：</strong></p>
+<ul>
+<li><strong>Ethereum</strong>：USDT基于ERC20标准运行。你可以使用Web3.js或Ethers.js与以太坊上的USDT合约进行交互。</li>
+<li><strong>Tron</strong>：USDT基于TRC20标准运行。Tron的API和SDK可以帮助你与USDT合约进行交互。</li>
+</ul>
+</li>
+<li><p><strong>获取API密钥：</strong></p>
+<ul>
+<li>如果你是与加密货币交易所进行交互（如Binance、OKX等），你需要在这些平台注册并获取API密钥。</li>
+</ul>
+</li>
+<li><p><strong>使用区块链库：</strong></p>
+<ul>
+<li>对于以太坊，使用<code>Web3.js</code>库可以与智能合约交互。你可以调用USDT的智能合约来查询余额、转账等。</li>
+<li>对于Tron，可以使用<code>tronWeb</code>库进行交互。</li>
+</ul>
+</li>
+</ol>
+<h3 id="以太坊（ERC20）上的USDT操作示例"><a href="#以太坊（ERC20）上的USDT操作示例" class="headerlink" title="以太坊（ERC20）上的USDT操作示例"></a>以太坊（ERC20）上的USDT操作示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Web3</span> = <span class="built_in">require</span>(<span class="string">&#x27;web3&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> web3 = <span class="keyword">new</span> <span class="title class_">Web3</span>(<span class="string">&#x27;https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// USDT ERC20合约地址</span></span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;0xdAC17F958D2ee523a2206206994597C13D831ec7&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> usdtAbi = [ <span class="comment">/* ERC20 ABI */</span> ]; <span class="comment">// 你需要导入或定义ERC20合约的ABI</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建USDT合约对象</span></span><br><span class="line"><span class="keyword">const</span> usdtContract = <span class="keyword">new</span> web3.<span class="property">eth</span>.<span class="title class_">Contract</span>(usdtAbi, usdtContractAddress);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询USDT余额</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getBalance</span> = <span class="keyword">async</span> (<span class="params">walletAddress</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> balance = <span class="keyword">await</span> usdtContract.<span class="property">methods</span>.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;USDT余额:&#x27;</span>, web3.<span class="property">utils</span>.<span class="title function_">fromWei</span>(balance, <span class="string">&#x27;mwei&#x27;</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转账USDT</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">transferUSDT</span> = <span class="keyword">async</span> (<span class="params">fromAddress, toAddress, amount, privateKey</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> nonce = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">getTransactionCount</span>(fromAddress, <span class="string">&#x27;latest&#x27;</span>); <span class="comment">// 获取最新的nonce</span></span><br><span class="line">    <span class="keyword">const</span> tx = &#123;</span><br><span class="line">        <span class="string">&#x27;from&#x27;</span>: fromAddress,</span><br><span class="line">        <span class="string">&#x27;to&#x27;</span>: usdtContractAddress,</span><br><span class="line">        <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">        <span class="string">&#x27;gas&#x27;</span>: <span class="number">2000000</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span>: usdtContract.<span class="property">methods</span>.<span class="title function_">transfer</span>(toAddress, web3.<span class="property">utils</span>.<span class="title function_">toWei</span>(amount, <span class="string">&#x27;mwei&#x27;</span>)).<span class="title function_">encodeABI</span>()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> signedTx = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="property">accounts</span>.<span class="title function_">signTransaction</span>(tx, privateKey);</span><br><span class="line">    <span class="keyword">const</span> receipt = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">sendSignedTransaction</span>(signedTx.<span class="property">rawTransaction</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Transaction receipt:&#x27;</span>, receipt);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tron（TRC20）上的USDT操作示例"><a href="#Tron（TRC20）上的USDT操作示例" class="headerlink" title="Tron（TRC20）上的USDT操作示例"></a>Tron（TRC20）上的USDT操作示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">TronWeb</span> = <span class="built_in">require</span>(<span class="string">&#x27;tronweb&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> tronWeb = <span class="keyword">new</span> <span class="title class_">TronWeb</span>(&#123;</span><br><span class="line">    <span class="attr">fullHost</span>: <span class="string">&#x27;https://api.trongrid.io&#x27;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: <span class="string">&#x27;你的私钥&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// USDT TRC20合约地址</span></span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询USDT余额</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getBalance</span> = <span class="keyword">async</span> (<span class="params">walletAddress</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">    <span class="keyword">const</span> balance = <span class="keyword">await</span> contract.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;USDT余额:&#x27;</span>, balance.<span class="title function_">toString</span>());</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转账USDT</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">transferUSDT</span> = <span class="keyword">async</span> (<span class="params">fromAddress, toAddress, amount</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">    <span class="keyword">const</span> transaction = <span class="keyword">await</span> contract.<span class="title function_">transfer</span>(toAddress, amount).<span class="title function_">send</span>(&#123;</span><br><span class="line">        <span class="attr">from</span>: fromAddress</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Transaction:&#x27;</span>, transaction);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用交易所API-如Binance"><a href="#使用交易所API-如Binance" class="headerlink" title="使用交易所API (如Binance)"></a>使用交易所API (如Binance)</h3><p>你可以通过交易所的API来进行USDT的交易操作，如买入、卖出、获取市场数据等。下面以Binance API为例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&#x27;axios&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> apiKey = <span class="string">&#x27;你的Binance API Key&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> apiSecret = <span class="string">&#x27;你的Binance API Secret&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getSignature</span> = (<span class="params">queryString</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> crypto.<span class="title function_">createHmac</span>(<span class="string">&#x27;sha256&#x27;</span>, apiSecret).<span class="title function_">update</span>(queryString).<span class="title function_">digest</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getAccountInfo</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> queryString = <span class="string">`timestamp=<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">const</span> signature = <span class="title function_">getSignature</span>(queryString);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">`https://api.binance.com/api/v3/account?<span class="subst">$&#123;queryString&#125;</span>&amp;signature=<span class="subst">$&#123;signature&#125;</span>`</span>, &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;X-MBX-APIKEY&#x27;</span>: apiKey</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Account Info:&#x27;</span>, response.<span class="property">data</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><strong>安全性</strong>：确保API密钥和私钥的安全性，不要泄露到不受信任的地方。</li>
+<li><strong>费用</strong>：加密货币交易涉及到矿工费用（Gas费），需要考虑在开发中。</li>
+<li><strong>网络</strong>：测试代码时，推荐使用测试网络（如Ropsten, Kovan, Tron Shasta等），而不是主网。</li>
+</ul>
+<p>根据你使用的区块链和交易所平台，具体的API和开发流程可能会有所不同。你可以根据需要进一步定制。</p>
+<p>你可以将USDT查询与转账功能制作成一个简单的网页，或者通过Telegram机器人实现快捷查询功能。</p>
+<h3 id="1-网页实现"><a href="#1-网页实现" class="headerlink" title="1. 网页实现"></a>1. 网页实现</h3><p>可以使用HTML、JavaScript和后端技术（例如Node.js）构建一个支持USDT余额查询和转账的网页。</p>
+<h4 id="前端HTML-JavaScript页面示例"><a href="#前端HTML-JavaScript页面示例" class="headerlink" title="前端HTML+JavaScript页面示例"></a>前端HTML+JavaScript页面示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>USDT 查询与转账<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-family</span>: Arial, sans-serif;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.input-group</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.input-group</span> <span class="selector-tag">label</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">button</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>USDT 查询与转账<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;walletAddress&quot;</span>&gt;</span>钱包地址:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;walletAddress&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入钱包地址&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getBalance()&quot;</span>&gt;</span>查询余额<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;balanceResult&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>转账<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;toAddress&quot;</span>&gt;</span>接收地址:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;toAddress&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入接收地址&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;amount&quot;</span>&gt;</span>金额:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;amount&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入转账金额&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;transferUSDT()&quot;</span>&gt;</span>转账<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;transferResult&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 调用后端API的示例</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getBalance</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> walletAddress = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;walletAddress&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;/api/getBalance&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; walletAddress &#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;balanceResult&#x27;</span>).<span class="property">innerText</span> = <span class="string">`余额: <span class="subst">$&#123;result.balance&#125;</span> USDT`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">transferUSDT</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> toAddress = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;toAddress&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> amount = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;amount&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;/api/transferUSDT&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; toAddress, amount &#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;transferResult&#x27;</span>).<span class="property">innerText</span> = <span class="string">`转账结果: <span class="subst">$&#123;result.message&#125;</span>`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="后端（Node-js示例）"><a href="#后端（Node-js示例）" class="headerlink" title="后端（Node.js示例）"></a>后端（Node.js示例）</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Web3</span> = <span class="built_in">require</span>(<span class="string">&#x27;web3&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TronWeb</span> = <span class="built_in">require</span>(<span class="string">&#x27;tronweb&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>());</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> web3 = <span class="keyword">new</span> <span class="title class_">Web3</span>(<span class="string">&#x27;https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> tronWeb = <span class="keyword">new</span> <span class="title class_">TronWeb</span>(&#123;</span><br><span class="line">    <span class="attr">fullHost</span>: <span class="string">&#x27;https://api.trongrid.io&#x27;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: <span class="string">&#x27;YOUR_PRIVATE_KEY&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ERC20 USDT合约地址</span></span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;0xdAC17F958D2ee523a2206206994597C13D831ec7&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> usdtAbi = [ <span class="comment">/* ERC20 ABI */</span> ];</span><br><span class="line"><span class="keyword">const</span> usdtContract = <span class="keyword">new</span> web3.<span class="property">eth</span>.<span class="title class_">Contract</span>(usdtAbi, usdtContractAddress);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询USDT余额</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/api/getBalance&#x27;</span>, <span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> walletAddress = req.<span class="property">body</span>.<span class="property">walletAddress</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> balance = <span class="keyword">await</span> usdtContract.<span class="property">methods</span>.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">balance</span>: web3.<span class="property">utils</span>.<span class="title function_">fromWei</span>(balance, <span class="string">&#x27;mwei&#x27;</span>) &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: error.<span class="property">message</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转账USDT</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/api/transferUSDT&#x27;</span>, <span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; toAddress, amount &#125; = req.<span class="property">body</span>;</span><br><span class="line">    <span class="keyword">const</span> fromAddress = <span class="string">&#x27;YOUR_FROM_ADDRESS&#x27;</span>;</span><br><span class="line">    <span class="keyword">const</span> privateKey = <span class="string">&#x27;YOUR_PRIVATE_KEY&#x27;</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> nonce = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">getTransactionCount</span>(fromAddress, <span class="string">&#x27;latest&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> tx = &#123;</span><br><span class="line">            <span class="attr">from</span>: fromAddress,</span><br><span class="line">            <span class="attr">to</span>: usdtContractAddress,</span><br><span class="line">            <span class="attr">nonce</span>: nonce,</span><br><span class="line">            <span class="attr">gas</span>: <span class="number">2000000</span>,</span><br><span class="line">            <span class="attr">data</span>: usdtContract.<span class="property">methods</span>.<span class="title function_">transfer</span>(toAddress, web3.<span class="property">utils</span>.<span class="title function_">toWei</span>(amount, <span class="string">&#x27;mwei&#x27;</span>)).<span class="title function_">encodeABI</span>()</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">const</span> signedTx = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="property">accounts</span>.<span class="title function_">signTransaction</span>(tx, privateKey);</span><br><span class="line">        <span class="keyword">const</span> receipt = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">sendSignedTransaction</span>(signedTx.<span class="property">rawTransaction</span>);</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&#x27;转账成功&#x27;</span>, receipt &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&#x27;转账失败&#x27;</span>, <span class="attr">error</span>: error.<span class="property">message</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running on port 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样你可以通过一个简单的网页前端，让用户输入钱包地址查询USDT余额，或是输入接收地址和金额进行转账。</p>
+<h3 id="2-Telegram-Bot实现"><a href="#2-Telegram-Bot实现" class="headerlink" title="2. Telegram Bot实现"></a>2. Telegram Bot实现</h3><p>可以通过使用Telegram Bot API和Node.js开发一个简单的Telegram机器人来查询USDT余额或发起转账请求。</p>
+<h4 id="创建Telegram-Bot"><a href="#创建Telegram-Bot" class="headerlink" title="创建Telegram Bot"></a>创建Telegram Bot</h4><ol>
+<li>通过<a target="_blank" rel="noopener" href="https://t.me/BotFather">@BotFather</a>创建一个新的Telegram机器人，并获得API密钥。</li>
+</ol>
+<h4 id="Node-js-Telegram-Bot-示例"><a href="#Node-js-Telegram-Bot-示例" class="headerlink" title="Node.js Telegram Bot 示例"></a>Node.js Telegram Bot 示例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">TelegramBot</span> = <span class="built_in">require</span>(<span class="string">&#x27;node-telegram-bot-api&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Web3</span> = <span class="built_in">require</span>(<span class="string">&#x27;web3&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> tronWeb = <span class="keyword">new</span> <span class="title class_">TronWeb</span>(&#123;</span><br><span class="line">    <span class="attr">fullHost</span>: <span class="string">&#x27;https://api.trongrid.io&#x27;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: <span class="string">&#x27;YOUR_PRIVATE_KEY&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> web3 = <span class="keyword">new</span> <span class="title class_">Web3</span>(<span class="string">&#x27;https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;0xdAC17F958D2ee523a2206206994597C13D831ec7&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> usdtAbi = [ <span class="comment">/* ERC20 ABI */</span> ];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bot = <span class="keyword">new</span> <span class="title class_">TelegramBot</span>(<span class="string">&#x27;YOUR_TELEGRAM_BOT_TOKEN&#x27;</span>, &#123; <span class="attr">polling</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> usdtContract = <span class="keyword">new</span> web3.<span class="property">eth</span>.<span class="title class_">Contract</span>(usdtAbi, usdtContractAddress);</span><br><span class="line"></span><br><span class="line">bot.<span class="title function_">onText</span>(<span class="regexp">/\/balance (.+)/</span>, <span class="title function_">async</span> (msg, match) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> chatId = msg.<span class="property">chat</span>.<span class="property">id</span>;</span><br><span class="line">    <span class="keyword">const</span> walletAddress = match[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> balance = <span class="keyword">await</span> usdtContract.<span class="property">methods</span>.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`USDT 余额: <span class="subst">$&#123;web3.utils.fromWei(balance, <span class="string">&#x27;mwei&#x27;</span>)&#125;</span>`</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`查询失败: <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">bot.<span class="title function_">onText</span>(<span class="regexp">/\/transfer (.+)/</span>, <span class="title function_">async</span> (msg, match) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> chatId = msg.<span class="property">chat</span>.<span class="property">id</span>;</span><br><span class="line">    <span class="keyword">const</span> [toAddress, amount] = match[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> fromAddress = <span class="string">&#x27;YOUR_FROM_ADDRESS&#x27;</span>;</span><br><span class="line">    <span class="keyword">const</span> privateKey = <span class="string">&#x27;YOUR_PRIVATE_KEY&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> nonce = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">getTransactionCount</span>(fromAddress, <span class="string">&#x27;latest&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> tx = &#123;</span><br><span class="line">            <span class="attr">from</span>: fromAddress,</span><br><span class="line">            <span class="attr">to</span>: usdtContractAddress,</span><br><span class="line">            <span class="attr">nonce</span>: nonce,</span><br><span class="line">            <span class="attr">gas</span>: <span class="number">2000000</span>,</span><br><span class="line">            <span class="attr">data</span>: usdtContract.<span class="property">methods</span>.<span class="title function_">transfer</span>(toAddress, web3.<span class="property">utils</span>.<span class="title function_">toWei</span>(amount, <span class="string">&#x27;mwei&#x27;</span>)).<span class="title function_">encodeABI</span>()</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">const</span> signedTx = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="property">accounts</span>.<span class="title function_">signTransaction</span>(tx, privateKey);</span><br><span class="line">        <span class="keyword">const</span> receipt = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">sendSignedTransaction</span>(signedTx.<span class="property">rawTransaction</span>);</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`转账成功: <span class="subst">$&#123;receipt.transactionHash&#125;</span>`</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`转账失败: <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样可以使用命令<code>/balance [钱包地址]</code>查询余额，使用<code>/transfer [接收地址] [金额]</code>发起转账请求。</p>
+<p>关于TRC20（基于Tron链的USDT）的查询和转账，可以通过使用<code>TronWeb</code>库与Tron网络进行交互。接下来将展示如何通过网页或Telegram机器人实现TRC20 USDT的余额查询和转账功能。</p>
+<h3 id="Trc网页实现"><a href="#Trc网页实现" class="headerlink" title="Trc网页实现"></a>Trc网页实现</h3><h4 id="前端HTML-JavaScript页面示例-1"><a href="#前端HTML-JavaScript页面示例-1" class="headerlink" title="前端HTML+JavaScript页面示例"></a>前端HTML+JavaScript页面示例</h4><p>这个示例与之前的类似，只需修改后端代码以支持TronWeb即可。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>TRC20 USDT 查询与转账<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-family</span>: Arial, sans-serif;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.input-group</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.input-group</span> <span class="selector-tag">label</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">button</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>TRC20 USDT 查询与转账<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;walletAddress&quot;</span>&gt;</span>钱包地址:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;walletAddress&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入钱包地址&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getBalance()&quot;</span>&gt;</span>查询余额<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;balanceResult&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>转账<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;toAddress&quot;</span>&gt;</span>接收地址:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;toAddress&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入接收地址&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-group&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;amount&quot;</span>&gt;</span>金额:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;amount&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入转账金额&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;transferUSDT()&quot;</span>&gt;</span>转账<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;transferResult&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 调用后端API的示例</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getBalance</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> walletAddress = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;walletAddress&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;/api/getBalance&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; walletAddress &#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;balanceResult&#x27;</span>).<span class="property">innerText</span> = <span class="string">`余额: <span class="subst">$&#123;result.balance&#125;</span> USDT`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">transferUSDT</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> toAddress = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;toAddress&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> amount = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;amount&#x27;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;/api/transferUSDT&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; toAddress, amount &#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;transferResult&#x27;</span>).<span class="property">innerText</span> = <span class="string">`转账结果: <span class="subst">$&#123;result.message&#125;</span>`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="后端Node-js-TronWeb"><a href="#后端Node-js-TronWeb" class="headerlink" title="后端Node.js + TronWeb"></a>后端Node.js + TronWeb</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TronWeb</span> = <span class="built_in">require</span>(<span class="string">&#x27;tronweb&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>());</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tronWeb = <span class="keyword">new</span> <span class="title class_">TronWeb</span>(&#123;</span><br><span class="line">    <span class="attr">fullHost</span>: <span class="string">&#x27;https://api.trongrid.io&#x27;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: <span class="string">&#x27;你的私钥&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// TRC20 USDT合约地址</span></span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询USDT余额</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/api/getBalance&#x27;</span>, <span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> walletAddress = req.<span class="property">body</span>.<span class="property">walletAddress</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">        <span class="keyword">const</span> balance = <span class="keyword">await</span> contract.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">balance</span>: tronWeb.<span class="title function_">fromSun</span>(balance) &#125;); <span class="comment">// 转换为USDT单位</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: error.<span class="property">message</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转账USDT</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/api/transferUSDT&#x27;</span>, <span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; toAddress, amount &#125; = req.<span class="property">body</span>;</span><br><span class="line">    <span class="keyword">const</span> fromAddress = tronWeb.<span class="property">defaultAddress</span>.<span class="property">base58</span>; <span class="comment">// 使用私钥加载的地址</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">        <span class="keyword">const</span> transaction = <span class="keyword">await</span> contract.<span class="title function_">transfer</span>(toAddress, tronWeb.<span class="title function_">toSun</span>(amount)).<span class="title function_">send</span>(&#123; <span class="attr">from</span>: fromAddress &#125;);</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&#x27;转账成功&#x27;</span>, transaction &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&#x27;转账失败&#x27;</span>, <span class="attr">error</span>: error.<span class="property">message</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running on port 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Telegram-Bot-实现"><a href="#2-Telegram-Bot-实现" class="headerlink" title="2. Telegram Bot 实现"></a>2. Telegram Bot 实现</h3><h4 id="使用TronWeb开发Telegram-Bot来查询TRC20-USDT余额和转账。"><a href="#使用TronWeb开发Telegram-Bot来查询TRC20-USDT余额和转账。" class="headerlink" title="使用TronWeb开发Telegram Bot来查询TRC20 USDT余额和转账。"></a>使用TronWeb开发Telegram Bot来查询TRC20 USDT余额和转账。</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">TelegramBot</span> = <span class="built_in">require</span>(<span class="string">&#x27;node-telegram-bot-api&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TronWeb</span> = <span class="built_in">require</span>(<span class="string">&#x27;tronweb&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tronWeb = <span class="keyword">new</span> <span class="title class_">TronWeb</span>(&#123;</span><br><span class="line">    <span class="attr">fullHost</span>: <span class="string">&#x27;https://api.trongrid.io&#x27;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: <span class="string">&#x27;你的私钥&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// TRC20 USDT合约地址</span></span><br><span class="line"><span class="keyword">const</span> usdtContractAddress = <span class="string">&#x27;TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bot = <span class="keyword">new</span> <span class="title class_">TelegramBot</span>(<span class="string">&#x27;你的Telegram Bot Token&#x27;</span>, &#123; <span class="attr">polling</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br><span class="line">bot.<span class="title function_">onText</span>(<span class="regexp">/\/balance (.+)/</span>, <span class="title function_">async</span> (msg, match) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> chatId = msg.<span class="property">chat</span>.<span class="property">id</span>;</span><br><span class="line">    <span class="keyword">const</span> walletAddress = match[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">        <span class="keyword">const</span> balance = <span class="keyword">await</span> contract.<span class="title function_">balanceOf</span>(walletAddress).<span class="title function_">call</span>();</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`USDT 余额: <span class="subst">$&#123;tronWeb.fromSun(balance)&#125;</span>`</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`查询失败: <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">bot.<span class="title function_">onText</span>(<span class="regexp">/\/transfer (.+)/</span>, <span class="title function_">async</span> (msg, match) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> chatId = msg.<span class="property">chat</span>.<span class="property">id</span>;</span><br><span class="line">    <span class="keyword">const</span> [toAddress, amount] = match[<span class="number">1</span>].<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>); <span class="comment">// 格式：/transfer [接收地址] [金额]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> fromAddress = tronWeb.<span class="property">defaultAddress</span>.<span class="property">base58</span>; <span class="comment">// 使用私钥生成的默认地址</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> contract = <span class="keyword">await</span> tronWeb.<span class="title function_">contract</span>().<span class="title function_">at</span>(usdtContractAddress);</span><br><span class="line">        <span class="keyword">const</span> transaction = <span class="keyword">await</span> contract.<span class="title function_">transfer</span>(toAddress, tronWeb.<span class="title function_">toSun</span>(amount)).<span class="title function_">send</span>(&#123; <span class="attr">from</span>: fromAddress &#125;);</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`转账成功，交易ID: <span class="subst">$&#123;transaction&#125;</span>`</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        bot.<span class="title function_">sendMessage</span>(chatId, <span class="string">`转账失败: <span class="subst">$&#123;error.message&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样，用户可以通过Telegram机器人使用命令<code>/balance [钱包地址]</code>查询TRC20 USDT的余额，或者通过<code>/transfer [接收地址] [金额]</code>进行转账。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基本步骤</div>
+      <div>http://example.com/lyyy/基本步骤/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%81%E4%BB%8E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%88%B0%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E7%9A%84%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/" title="彻底搞懂排序算法！从稳定排序到不稳定排序的全面解析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">彻底搞懂排序算法！从稳定排序到不稳定排序的全面解析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/Web3%20%E6%98%AF%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%90%86%E5%BF%B5%E3%80%82%E5%AE%83%E6%97%A8%E5%9C%A8%E9%80%9A%E8%BF%87%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E8%BF%90%E4%BD%9C%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%8E%E4%BC%A0%E7%BB%9F%E7%9A%84Web2/" title="Web3 是一种基于区块链技术的互联网发展理念。它旨在通过去中心化的方式重新定义互联网的运作方式，与传统的Web2">
+                        <span class="hidden-mobile">Web3 是一种基于区块链技术的互联网发展理念。它旨在通过去中心化的方式重新定义互联网的运作方式，与传统的Web2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

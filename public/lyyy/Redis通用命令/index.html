@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="Redis通用命令**1、Redis默认有16个数据库，切换到第2个数据库 1select 1  2、查看当前数据库key的数量 1DBSIZE  3、设置一个key为username，值为mike的数据 1set username mike  4、获取key为username的值 1get username  5、获取所有的key 1keys *  6、清除当前数据库 1flushdb  7、清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis通用命令">
+<meta property="og:url" content="http://example.com/lyyy/Redis%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="Redis通用命令**1、Redis默认有16个数据库，切换到第2个数据库 1select 1  2、查看当前数据库key的数量 1DBSIZE  3、设置一个key为username，值为mike的数据 1set username mike  4、获取key为username的值 1get username  5、获取所有的key 1keys *  6、清除当前数据库 1flushdb  7、清">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/e5a4df2685ab4e754729c900d20eb091.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3155e007b4575f8219d2cd6523e98546.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/07cd8fccca0df00a3dbc616e09eb82c9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/7d526e10e25e532e7cc8acb731afa3ac.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b44ff342b1e4221f85e06b9b48c606fb.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8450fe8ff2015fec9784754d9b460b3c.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/5e3992493fbcd74ad3bb9ad33a3a6bd5.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f51753f18d1072bd46b76bbb9619abb1.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/a2f0d9b51a992e9afc6075bda6436489.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/052b347be2397cda1f81b741c872dd04.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/5c690ddea425461422ac13ca7b68a141.png">
+<meta property="article:published_time" content="2024-08-07T22:41:06.497Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.469Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/e5a4df2685ab4e754729c900d20eb091.png">
+  
+  
+  
+  <title>Redis通用命令 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Redis通用命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-08 06:41" pubdate>
+          2024年8月8日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          935 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Redis通用命令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Redis通用命令"><a href="#Redis通用命令" class="headerlink" title="Redis通用命令**"></a>Redis通用命令**</h2><p>1、Redis默认有16个数据库，切换到第2个数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1</span><br></pre></td></tr></table></figure>
+
+<p>2、查看当前数据库key的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DBSIZE</span><br></pre></td></tr></table></figure>
+
+<p>3、设置一个key为username，值为mike的数据</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> username mike</span><br></pre></td></tr></table></figure>
+
+<p>4、获取key为username的值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> username</span><br></pre></td></tr></table></figure>
+
+<p>5、获取所有的key</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">keys</span> *</span><br></pre></td></tr></table></figure>
+
+<p>6、清除当前数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushdb</span><br></pre></td></tr></table></figure>
+
+<p>7、清楚所有数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushall</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、Redis基本命令"><a href="#四、Redis基本命令" class="headerlink" title="四、Redis基本命令"></a>四、Redis基本命令</h2><p>1、查询key为username是否存在</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exists</span> username</span><br></pre></td></tr></table></figure>
+
+<p>2、指定key为username移动到1号数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move username 1</span><br></pre></td></tr></table></figure>
+
+<p>3、指定key为username10s后过期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expire username 10</span><br></pre></td></tr></table></figure>
+
+<p>4、查看key为username还有多久过期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ttl username</span><br></pre></td></tr></table></figure>
+
+<p>5、查看key为username是什么类型</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> username</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五、五种数据结构类型"><a href="#五、五种数据结构类型" class="headerlink" title="五、五种数据结构类型"></a>五、五种数据结构类型</h2><h3 id="5-1、String类型"><a href="#5-1、String类型" class="headerlink" title="5.1、String类型"></a>5.1、String类型</h3><p>1、设置key为name的值为htt</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">name</span> htt</span><br></pre></td></tr></table></figure>
+
+<p>2、获取key为name的值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> name</span><br></pre></td></tr></table></figure>
+
+<p>3、拼接key为name的值：httstudy</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append name <span class="keyword">study</span></span><br></pre></td></tr></table></figure>
+
+<p> 4、获取key为name的值的长度</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strlen <span class="keyword">name</span></span><br></pre></td></tr></table></figure>
+
+<p>5、设置key为view的值加1 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">incr <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
+
+<p>6、设置key为view的值减1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decr <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
+
+<p>7、设置key为view的值加10</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">incrby <span class="keyword">view</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>8、设置key为view的值减10</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decrby <span class="keyword">view</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>9、截取下标为0-3之间的字符串，例如：abcdef，截取后abcd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getrange name 0 3</span><br></pre></td></tr></table></figure>
+
+<p>10、从下标为1进行替换字符串，例如：abcdef，替换后a000efg</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setrange name 1 000</span><br></pre></td></tr></table></figure>
+
+<p>11、设置key为name的值为hello，10s后过期</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setex <span class="keyword">name</span> <span class="number">10</span> hello</span><br></pre></td></tr></table></figure>
+
+<p>12、如果不存在key为title的，值设置为redis，如果存在，则set失败</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setnx title redis</span><br></pre></td></tr></table></figure>
+
+<p>13、一次性设置多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mset k1 v1 k2 v2 k3 v3</span><br><span class="line">mset user:1:name htt user:1:age 2</span><br></pre></td></tr></table></figure>
+
+<p>14、一次性获取多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mget k1 k2 k3</span><br><span class="line">mget user:1:name user:1:age</span><br></pre></td></tr></table></figure>
+
+<p>15、如果k1已经存在，则k1，k4全部设置失败，参考事务的原子性操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msetnx k1 v1 k4 v4</span><br></pre></td></tr></table></figure>
+
+<p>16、如果不存在key为username的值，则返回nil，然后set进去；如果存在值，则获取原来的值并设置新的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getset username htt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e5a4df2685ab4e754729c900d20eb091.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>看了图会更好理解一些！</p>
+<h3 id="5-2、List集合类型"><a href="#5-2、List集合类型" class="headerlink" title="5.2、List集合类型"></a>5.2、List集合类型</h3><p>1、将一个值或者多个值插入到列表的头部</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush list 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3155e007b4575f8219d2cd6523e98546.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>2、将一个值或者多个值插入到列表的尾部</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpush list 4</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://i-blog.csdnimg.cn/blog_migrate/07cd8fccca0df00a3dbc616e09eb82c9.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>3、通过区间获取具体的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange list 0 -1</span><br></pre></td></tr></table></figure>
+
+<p>4、移除list的第一个元素：3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpop list</span><br></pre></td></tr></table></figure>
+
+<p>5、移除list的最后一个元素：4</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpop list</span><br></pre></td></tr></table></figure>
+
+<p>6、通过下标获得list当中的某一个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lindex list 0</span><br></pre></td></tr></table></figure>
+
+<p>7、获取list的长度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">llen list</span><br></pre></td></tr></table></figure>
+
+<p> 8、移除list集合指定个数的value，移除1个值为2的，精确匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem list 1 2</span><br></pre></td></tr></table></figure>
+
+<p>9、截取list集合中下标为1到下标为2之间的元素集合，并覆盖原来的list集合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ltrim list 1 2</span><br></pre></td></tr></table></figure>
+
+<p> 10、更新list集合当中下标为0的值为bbb，如果下标0的值不存在，则报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lset list 0 bbb</span><br></pre></td></tr></table></figure>
+
+<p>11、将一个某一个具体的值插入到某一个具体元素（默认第一个）的前面或者后面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linsert list BEFORE kkk aaa</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7d526e10e25e532e7cc8acb731afa3ac.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linsert list AFTER kkk aaa</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b44ff342b1e4221f85e06b9b48c606fb.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="5-3、Set集合类型"><a href="#5-3、Set集合类型" class="headerlink" title="5.3、Set集合类型"></a>5.3、Set集合类型</h3><p>1、往set集合中添加一个元素</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sadd <span class="keyword">set</span> hello</span><br></pre></td></tr></table></figure>
+
+<p>2、查看set集合中所有元素</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smembers <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+
+<p>3、 查看set集合中是否存在某元素</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sismember <span class="keyword">set</span> world</span><br></pre></td></tr></table></figure>
+
+<p> 4、随机抽取出1个元素</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srandmember <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+
+<p>5、随机抽取出2个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srandmember set 2</span><br></pre></td></tr></table></figure>
+
+<p>6、随机删除set集合中某个元素</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spop <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+
+<p>7、移动set集合中的world元素到set2集合中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smove set set2 world</span><br></pre></td></tr></table></figure>
+
+<p>8、作set2集合减去set集合的差集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdiff set2 set</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/8450fe8ff2015fec9784754d9b460b3c.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>9、set和set2的交集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sinter set set2</span><br></pre></td></tr></table></figure>
+
+<p>10、set和set2作并集并去重</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sunion set set2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5e3992493fbcd74ad3bb9ad33a3a6bd5.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="5-4、Hash集合类型"><a href="#5-4、Hash集合类型" class="headerlink" title="5.4、Hash集合类型"></a>5.4、Hash集合类型</h3><p>1、往hash集合中存放键值对数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hset <span class="built_in">hash</span> username mike</span><br></pre></td></tr></table></figure>
+
+<p>2、从hash集合中获取数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hget <span class="built_in">hash</span> username</span><br></pre></td></tr></table></figure>
+
+<p>3、同时往hash集合中添加多个值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmset <span class="built_in">hash</span> username jack age 2</span><br></pre></td></tr></table></figure>
+
+<p>4、同时往hash集合中获取多个值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmget <span class="built_in">hash</span> username age</span><br></pre></td></tr></table></figure>
+
+<p>5、获取hash集合中所有的键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgetall <span class="built_in">hash</span></span><br></pre></td></tr></table></figure>
+
+<p>6、删除hash集合中指定的key字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdel <span class="built_in">hash</span> username</span><br></pre></td></tr></table></figure>
+
+<p>7、获取hash集合的长度</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hlen <span class="built_in">hash</span></span><br></pre></td></tr></table></figure>
+
+<p>8、判断hash集合中指定字段是否存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexists <span class="built_in">hash</span> username</span><br></pre></td></tr></table></figure>
+
+<p>9、获取hash集合中所有的key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hvals <span class="built_in">hash</span></span><br></pre></td></tr></table></figure>
+
+<p>10、获取hash集合中所有的值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hkeys <span class="built_in">hash</span></span><br></pre></td></tr></table></figure>
+
+<p> 11、指定hash集合中指定增量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hincrby <span class="built_in">hash</span> views 1</span><br></pre></td></tr></table></figure>
+
+<p>12、如果不存在则直接设置值，存在则设置失败</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hsetnx <span class="built_in">hash</span> password 123456</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5、Zset有序集合类型"><a href="#5-5、Zset有序集合类型" class="headerlink" title="5.5、Zset有序集合类型"></a>5.5、Zset有序集合类型</h3><p>1、添加一个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd zset 1 first</span><br></pre></td></tr></table></figure>
+
+<p>2、添加多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd zset 2 second 3 third 4 four</span><br></pre></td></tr></table></figure>
+
+<p>3、获取zset集合中所有元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrange zset 0 -1</span><br></pre></td></tr></table></figure>
+
+<p>4、给zset集合中的元素从小到大排序，-inf：负无穷，+inf：正无穷</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrangebyscore zset -<span class="built_in">inf</span> +<span class="built_in">inf</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f51753f18d1072bd46b76bbb9619abb1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>5、从小到大排序并输出键值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrangebyscore zset -<span class="built_in">inf</span> +<span class="built_in">inf</span> withscores</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a2f0d9b51a992e9afc6075bda6436489.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>6、指定负无穷到1的范围</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrangebyscore zset -<span class="built_in">inf</span> <span class="number">1</span> withscores</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/052b347be2397cda1f81b741c872dd04.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>7、移除zset集合中指定的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrem zset four</span><br></pre></td></tr></table></figure>
+
+<p>8、查看zset集合中元素个数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcard zset</span><br></pre></td></tr></table></figure>
+
+<p> 9、反转指定范围</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrevrange zset 1 2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5c690ddea425461422ac13ca7b68a141.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Redis通用命令</div>
+      <div>http://example.com/lyyy/Redis通用命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/%E3%80%8A%E9%BB%91%E7%A5%9E%E8%AF%9D%C2%B7%E6%82%9F%E7%A9%BA%E3%80%8B%E5%AF%BC%E5%9B%BE%E6%8B%86%E8%A7%A3%E6%94%BB%E7%95%A5%EF%BC%9A/" title="《黑神话·悟空》导图拆解攻略：">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《黑神话·悟空》导图拆解攻略：</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/Java%E5%A4%8D%E4%B9%A0/" title="Java复习">
+                        <span class="hidden-mobile">Java复习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

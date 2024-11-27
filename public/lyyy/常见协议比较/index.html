@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="在搭建代理服务时，选择一个稳定、安全且快速的协议是关键。以下是几种常见的协议的特点和推荐，适用于不同的需求和使用场景：  1. 常见协议比较   协议 特点 适用场景 优缺点    VMess Xray&#x2F;V2Ray 的核心协议，支持复杂加密和动态伪装。 高需求环境，如穿越防火墙，个人使用和小型团队。 优点：安全、抗封锁；缺点：依赖服务端支持。   VLESS VMess 的升级版，无状态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见协议比较">
+<meta property="og:url" content="http://example.com/lyyy/%E5%B8%B8%E8%A7%81%E5%8D%8F%E8%AE%AE%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="在搭建代理服务时，选择一个稳定、安全且快速的协议是关键。以下是几种常见的协议的特点和推荐，适用于不同的需求和使用场景：  1. 常见协议比较   协议 特点 适用场景 优缺点    VMess Xray&#x2F;V2Ray 的核心协议，支持复杂加密和动态伪装。 高需求环境，如穿越防火墙，个人使用和小型团队。 优点：安全、抗封锁；缺点：依赖服务端支持。   VLESS VMess 的升级版，无状态">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-24T10:37:20.640Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.638Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>常见协议比较 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常见协议比较"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-24 18:37" pubdate>
+          2024年11月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          858 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常见协议比较</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在搭建代理服务时，选择一个稳定、安全且快速的协议是关键。以下是几种常见的协议的特点和推荐，适用于不同的需求和使用场景：</p>
+<hr>
+<h3 id="1-常见协议比较"><a href="#1-常见协议比较" class="headerlink" title="1. 常见协议比较"></a><strong>1. 常见协议比较</strong></h3><table>
+<thead>
+<tr>
+<th>协议</th>
+<th><strong>特点</strong></th>
+<th><strong>适用场景</strong></th>
+<th><strong>优缺点</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>VMess</strong></td>
+<td>Xray&#x2F;V2Ray 的核心协议，支持复杂加密和动态伪装。</td>
+<td>高需求环境，如穿越防火墙，个人使用和小型团队。</td>
+<td>优点：安全、抗封锁；缺点：依赖服务端支持。</td>
+</tr>
+<tr>
+<td><strong>VLESS</strong></td>
+<td>VMess 的升级版，无状态、更灵活，支持 QUIC 等新型传输。</td>
+<td>中高需求环境，注重性能和低延迟。</td>
+<td>优点：轻量化、支持更多传输；缺点：复杂配置。</td>
+</tr>
+<tr>
+<td><strong>Trojan</strong></td>
+<td>基于 HTTPS 的代理协议，伪装成正常的 HTTPS 流量，易于伪装和难以识别。</td>
+<td>企业&#x2F;个人环境，访问封锁较严重地区。</td>
+<td>优点：极高伪装性；缺点：依赖有效域名和证书。</td>
+</tr>
+<tr>
+<td><strong>Shadowsocks (SS)</strong></td>
+<td>开源轻量级代理协议，基于加密实现快速传输。</td>
+<td>轻量用户，如普通网页浏览和视频观看。</td>
+<td>优点：简单高效；缺点：抗封锁能力较弱。</td>
+</tr>
+<tr>
+<td><strong>HTTP&#x2F;2 + TLS</strong></td>
+<td>使用 HTTPS 通道进行代理流量伪装，基于 Web 的高兼容性。</td>
+<td>需要兼顾性能和隐匿性时。</td>
+<td>优点：速度快、兼容性好；缺点：配置较复杂。</td>
+</tr>
+<tr>
+<td><strong>WireGuard</strong></td>
+<td>类 VPN 协议，轻量级、现代化，性能极高，延迟低。</td>
+<td>点对点通信，特别适合需要高性能和低延迟的场景。</td>
+<td>优点：极快、稳定；缺点：可能容易被识别。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-推荐选择"><a href="#2-推荐选择" class="headerlink" title="2. 推荐选择"></a><strong>2. 推荐选择</strong></h3><h4 id="2-1-最稳定的协议：Trojan"><a href="#2-1-最稳定的协议：Trojan" class="headerlink" title="2.1 最稳定的协议：Trojan"></a><strong>2.1 最稳定的协议：Trojan</strong></h4><ul>
+<li><p>原因</p>
+<p>：</p>
+<ul>
+<li>使用 HTTPS 伪装，流量看起来与正常的 Web 浏览几乎无差别。</li>
+<li>很难被识别为代理流量（封锁难度高）。</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<p>：</p>
+<ul>
+<li>高度安全性需求。</li>
+<li>能够申请到域名和证书的用户。</li>
+</ul>
+</li>
+<li><p>推荐配置</p>
+<p>：</p>
+<ul>
+<li>Nginx 反代 + Trojan，伪装成 HTTPS 网站流量。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-2-最安全的协议：VLESS"><a href="#2-2-最安全的协议：VLESS" class="headerlink" title="2.2 最安全的协议：VLESS"></a><strong>2.2 最安全的协议：VLESS</strong></h4><ul>
+<li><p>原因</p>
+<p>：</p>
+<ul>
+<li>无状态设计，无需服务端存储用户信息，避免敏感信息泄漏。</li>
+<li>动态伪装流量，支持新型传输协议（如 QUIC）。</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<p>：</p>
+<ul>
+<li>注重隐私的用户。</li>
+<li>高级用户需要定制化的传输方案。</li>
+</ul>
+</li>
+<li><p>推荐配置</p>
+<p>：</p>
+<ul>
+<li>VLESS + TLS + WebSocket (WS) 或 QUIC。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-3-最快速的协议：WireGuard"><a href="#2-3-最快速的协议：WireGuard" class="headerlink" title="2.3 最快速的协议：WireGuard"></a><strong>2.3 最快速的协议：WireGuard</strong></h4><ul>
+<li><p>原因</p>
+<p>：</p>
+<ul>
+<li>点对点协议，直接建立连接，减少中间环节导致的延迟。</li>
+<li>加密性能高，适合需要低延迟的应用场景。</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<p>：</p>
+<ul>
+<li>游戏、视频通话等高性能需求。</li>
+</ul>
+</li>
+<li><p>推荐配置</p>
+<p>：</p>
+<ul>
+<li>WireGuard + 仅允许特定 IP 使用。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-4-性能与安全平衡：VMess"><a href="#2-4-性能与安全平衡：VMess" class="headerlink" title="2.4 性能与安全平衡：VMess"></a><strong>2.4 性能与安全平衡：VMess</strong></h4><ul>
+<li><p>原因</p>
+<p>：</p>
+<ul>
+<li>综合性能较好，抗封锁能力也不错。</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<p>：</p>
+<ul>
+<li>常规需求，如稳定的网页浏览、在线视频。</li>
+</ul>
+</li>
+<li><p>推荐配置</p>
+<p>：</p>
+<ul>
+<li>VMess + TLS + WebSocket，伪装成正常的 Web 流量。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-推荐搭建方案"><a href="#3-推荐搭建方案" class="headerlink" title="3. 推荐搭建方案"></a><strong>3. 推荐搭建方案</strong></h3><h4 id="3-1-Trojan-搭建"><a href="#3-1-Trojan-搭建" class="headerlink" title="3.1 Trojan 搭建"></a><strong>3.1 Trojan 搭建</strong></h4><ol>
+<li><p>安装 Trojan：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sL https://git.io/trojan-install)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置域名与证书。</p>
+</li>
+<li><p>使用 Nginx 进行 HTTPS 流量伪装。</p>
+</li>
+</ol>
+<h4 id="3-2-VLESS-搭建（Xray-Core）"><a href="#3-2-VLESS-搭建（Xray-Core）" class="headerlink" title="3.2 VLESS 搭建（Xray Core）"></a><strong>3.2 VLESS 搭建（Xray Core）</strong></h4><ol>
+<li><p>安装 Xray：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/XTLS/Xray-install/main/install-release.sh)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 JSON 文件，设置 VLESS + TLS + WebSocket。</p>
+</li>
+<li><p>使用 Nginx 配置反代。</p>
+</li>
+</ol>
+<h4 id="3-3-WireGuard-搭建"><a href="#3-3-WireGuard-搭建" class="headerlink" title="3.3 WireGuard 搭建"></a><strong>3.3 WireGuard 搭建</strong></h4><ol>
+<li><p>安装 WireGuard：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install wireguard -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置服务端和客户端公私钥。</p>
+</li>
+<li><p>设置点对点连接。</p>
+</li>
+</ol>
+<hr>
+<h3 id="4-总结推荐"><a href="#4-总结推荐" class="headerlink" title="4. 总结推荐"></a><strong>4. 总结推荐</strong></h3><ul>
+<li><strong>强伪装</strong>：选择 Trojan。</li>
+<li><strong>高性能</strong>：选择 WireGuard。</li>
+<li><strong>灵活性</strong>：选择 VLESS 或 VMess。</li>
+</ul>
+<p>如需详细的具体安装步骤，欢迎进一步咨询！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常见协议比较</div>
+      <div>http://example.com/lyyy/常见协议比较/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/CF-%E4%BC%98%E9%80%89%E5%AE%98%E6%96%B9IP/" title="CF-优选官方IP">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CF-优选官方IP</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/mca%E6%9C%80%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/" title="mca最常用终端命令">
+                        <span class="hidden-mobile">mca最常用终端命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

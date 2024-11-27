@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="在 iOS 平台上有一些常用的代理软件，支持不同的代理协议类型，比如 Shadowsocks (SS)、ShadowsocksR (SSR)、VMess、VLESS、Trojan 等。以下是几款常见的 iOS 代理软件以及它们分别支持的协议和适用场景的简单对比： 1. Quantumult X 支持协议：HTTP、HTTPS、SOCKS5、Shadowsocks、VMess、Trojan、VLES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 代理软件">
+<meta property="og:url" content="http://example.com/lyyy/%20iOS%20%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="在 iOS 平台上有一些常用的代理软件，支持不同的代理协议类型，比如 Shadowsocks (SS)、ShadowsocksR (SSR)、VMess、VLESS、Trojan 等。以下是几款常见的 iOS 代理软件以及它们分别支持的协议和适用场景的简单对比： 1. Quantumult X 支持协议：HTTP、HTTPS、SOCKS5、Shadowsocks、VMess、Trojan、VLES">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-01T09:42:41.186Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.659Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>iOS 代理软件 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="iOS 代理软件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-01 17:42" pubdate>
+          2024年11月1日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          788 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">iOS 代理软件</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在 iOS 平台上有一些常用的代理软件，支持不同的代理协议类型，比如 Shadowsocks (SS)、ShadowsocksR (SSR)、VMess、VLESS、Trojan 等。以下是几款常见的 iOS 代理软件以及它们分别支持的协议和适用场景的简单对比：</p>
+<h3 id="1-Quantumult-X"><a href="#1-Quantumult-X" class="headerlink" title="1. Quantumult X"></a>1. <strong>Quantumult X</strong></h3><ul>
+<li><strong>支持协议</strong>：HTTP、HTTPS、SOCKS5、Shadowsocks、VMess、Trojan、VLESS</li>
+<li><strong>特点</strong>：支持多种协议和规则筛选，适合高级用户。可以灵活地使用脚本来做复杂的路由分流。</li>
+<li><strong>适用场景</strong>：适合对隐私和性能有较高要求的用户，可以实现丰富的定制功能，如广告过滤、分流、地理位置限制绕过等。</li>
+</ul>
+<h3 id="2-Shadowrocket"><a href="#2-Shadowrocket" class="headerlink" title="2. Shadowrocket"></a>2. <strong>Shadowrocket</strong></h3><ul>
+<li><strong>支持协议</strong>：Shadowsocks、VMess、Trojan、SOCKS5、HTTP(S)</li>
+<li><strong>特点</strong>：界面简洁，支持多种常见代理协议和分流，应用广泛。</li>
+<li><strong>适用场景</strong>：支持丰富的代理协议选择，可以满足普通用户到专业用户的需求。适合希望简单快捷设置代理的用户。</li>
+</ul>
+<h3 id="3-Kitsunebi"><a href="#3-Kitsunebi" class="headerlink" title="3. Kitsunebi"></a>3. <strong>Kitsunebi</strong></h3><ul>
+<li><strong>支持协议</strong>：VMess、Shadowsocks、SOCKS5、HTTP</li>
+<li><strong>特点</strong>：基于 V2Ray Core，支持 VMess 及多种常见协议。</li>
+<li><strong>适用场景</strong>：适合需要 VMess、Shadowsocks 等常用代理协议的用户，适合简单代理需求。</li>
+</ul>
+<h3 id="4-Loon"><a href="#4-Loon" class="headerlink" title="4. Loon"></a>4. <strong>Loon</strong></h3><ul>
+<li><strong>支持协议</strong>：HTTP、SOCKS5、Shadowsocks、VMess、Trojan</li>
+<li><strong>特点</strong>：功能全面，支持多种协议，提供分流策略与规则分组功能。</li>
+<li><strong>适用场景</strong>：适合需要自定义规则和高稳定性的用户，可以选择不同节点进行分流设置，适合多场景应用。</li>
+</ul>
+<h3 id="5-Surge"><a href="#5-Surge" class="headerlink" title="5. Surge"></a>5. <strong>Surge</strong></h3><ul>
+<li><strong>支持协议</strong>：HTTP、HTTPS、SOCKS5、Shadowsocks、VMess、Trojan</li>
+<li><strong>特点</strong>：支持多种规则设置，支持分流、流量统计、脚本等高级功能。</li>
+<li><strong>适用场景</strong>：适合需要精确控制代理流量、分流及调试网络流量的用户，常用于企业 VPN、应用开发测试。</li>
+</ul>
+<hr>
+<h3 id="代理协议类型及区别"><a href="#代理协议类型及区别" class="headerlink" title="代理协议类型及区别"></a>代理协议类型及区别</h3><ol>
+<li><p>**Shadowsocks (SS)**：</p>
+<ul>
+<li><strong>特点</strong>：轻量级加密代理，基于 SOCKS5，用于翻墙和绕过审查。</li>
+<li><strong>优点</strong>：速度快、资源占用低。</li>
+<li><strong>缺点</strong>：加密强度相对较低。</li>
+</ul>
+</li>
+<li><p>**ShadowsocksR (SSR)**：</p>
+<ul>
+<li><strong>特点</strong>：Shadowsocks 的改进版，添加了协议和混淆特性，提高隐匿性。</li>
+<li><strong>优点</strong>：更隐蔽、绕过特定限制更有效。</li>
+<li><strong>缺点</strong>：复杂度较高。</li>
+</ul>
+</li>
+<li><p><strong>VMess</strong>：</p>
+<ul>
+<li><strong>特点</strong>：V2Ray 的主要协议，支持 UUID 用户认证和内置加密。</li>
+<li><strong>优点</strong>：隐私性较好，适合严格审查环境。</li>
+<li><strong>缺点</strong>：加密占用资源较多。</li>
+</ul>
+</li>
+<li><p><strong>VLESS</strong>：</p>
+<ul>
+<li><strong>特点</strong>：VMess 的轻量版，取消了内置加密，支持与 TLS 等组合使用。</li>
+<li><strong>优点</strong>：高性能、低延迟。</li>
+<li><strong>缺点</strong>：需要 TLS 等额外加密。</li>
+</ul>
+</li>
+<li><p><strong>Trojan</strong>：</p>
+<ul>
+<li><strong>特点</strong>：基于 HTTPS 的代理协议，利用 TLS 来隐藏流量。</li>
+<li><strong>优点</strong>：伪装性强，适合流量检测环境。</li>
+<li><strong>缺点</strong>：依赖 TLS，速度受制于 HTTPS 传输性能。</li>
+</ul>
+</li>
+<li><p>**SOCKS5 &#x2F; HTTP(S)**：</p>
+<ul>
+<li><strong>特点</strong>：标准的代理协议，通常没有加密，适合局域网或需要简单代理的环境。</li>
+<li><strong>优点</strong>：速度快，兼容性好。</li>
+<li><strong>缺点</strong>：缺少加密，隐私性不佳。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不同的协议适合不同的需求场景，如 Shadowsocks 系列适合简单代理需求，而 Trojan、VMess 则适合有高隐私保护需求的用户。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>iOS 代理软件</div>
+      <div>http://example.com/lyyy/ iOS 代理软件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/substore%E8%84%9A%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="substore脚本操作">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">substore脚本操作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/%E5%9C%A8%20Nginx%20%E7%9A%84%20location%20%E9%85%8D%E7%BD%AE%E4%B8%ADpath%E8%B7%AF%E5%BE%84%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A/" title="在 Nginx 的 location 配置中path路径一篇搞定">
+                        <span class="hidden-mobile">在 Nginx 的 location 配置中path路径一篇搞定</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

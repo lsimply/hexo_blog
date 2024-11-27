@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="OpenAPI优雅的跨平台脚本API，一种代码，同时支持Quantumult X, Loon, Surge, JSBox 和Node JS。让开发者更轻松在Node平台调试代码。 示例开始使用将api-minified.js内容复制到js脚本下方。 12const $ &#x3D; API(&quot;weather&quot;); &#x2F;&#x2F; 创建一个名字为weather的脚本。默认为product环境，抑制所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="substore OpenAPI">
+<meta property="og:url" content="http://example.com/lyyy/substore%20OpenAPI/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="OpenAPI优雅的跨平台脚本API，一种代码，同时支持Quantumult X, Loon, Surge, JSBox 和Node JS。让开发者更轻松在Node平台调试代码。 示例开始使用将api-minified.js内容复制到js脚本下方。 12const $ &#x3D; API(&quot;weather&quot;); &#x2F;&#x2F; 创建一个名字为weather的脚本。默认为product环境，抑制所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-03T11:03:33.525Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.464Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>substore OpenAPI - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="substore OpenAPI"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-03 19:03" pubdate>
+          2024年11月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          981 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">substore OpenAPI</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="OpenAPI"><a href="#OpenAPI" class="headerlink" title="OpenAPI"></a>OpenAPI</h1><p>优雅的跨平台脚本API，一种代码，同时支持Quantumult X, Loon, Surge, JSBox 和Node JS。让开发者更轻松在Node平台调试代码。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h3><p>将<code>api-minified.js</code>内容复制到js脚本下方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $ = <span class="title function_">API</span>(<span class="string">&quot;weather&quot;</span>); <span class="comment">// 创建一个名字为weather的脚本。默认为product环境，抑制所有log输出，保持error信息。。</span></span><br><span class="line"><span class="keyword">const</span> $ = <span class="title function_">API</span>(<span class="string">&quot;weather&quot;</span>, <span class="literal">true</span>); <span class="comment">// 打开debug环境，打开所有log输出</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">log</span>(<span class="string">&quot;Something&quot;</span>); <span class="comment">// 如果debug设置为false, log不会有任何输出。</span></span><br><span class="line">$.<span class="title function_">info</span>(<span class="string">&quot;Some important thing&quot;</span>); <span class="comment">// 需要展示给用户的info信息，不受debug影响。</span></span><br><span class="line">$.<span class="title function_">error</span>(<span class="string">&quot;Some error message&quot;</span>); <span class="comment">// 错误信息，不受debug影响。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="环境判断"><a href="#环境判断" class="headerlink" title="环境判断"></a>环境判断</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.env.<span class="property">isQX</span>;</span><br><span class="line">$.env.<span class="property">isSurge</span>;</span><br><span class="line">$.env.<span class="property">isLoon</span>;</span><br><span class="line">$.env.<span class="property">isNode</span>;</span><br><span class="line">$.env.<span class="property">isJSBox</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">notify</span>(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;subtitle&quot;</span>, <span class="string">&quot;content&quot;</span>); <span class="comment">// 简单标题</span></span><br><span class="line"><span class="comment">// URL标题</span></span><br><span class="line"></span><br><span class="line">$.<span class="title function_">notify</span>(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;subtitle&quot;</span>, <span class="string">&quot;content&quot;</span>, &#123;<span class="string">&quot;open-url&quot;</span>: <span class="string">&quot;https://www.bing.com&quot;</span>&#125;)</span><br><span class="line"><span class="comment">// 多媒体标题，QX &gt;= build 316, 其他平台不会显示多媒体内容。</span></span><br><span class="line">$.<span class="title function_">notify</span>(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;subtitle&quot;</span>, <span class="string">&quot;content&quot;</span>, &#123;<span class="string">&quot;media-url&quot;</span>: <span class="string">&quot;https://avatars2.githubusercontent.com/u/21050064?s=460&amp;u=40a74913dd0a3d00670d05148c3a08c787470021&amp;v=4&quot;</span>&#125;) </span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>HTTP接口在Node使用request实现，需要用npm安装request。推荐通过如下操作安装到全局，并link。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g request</span><br><span class="line"><span class="comment"># 在工作目录</span></span><br><span class="line">npm <span class="built_in">link</span> request</span><br></pre></td></tr></table></figure>
+
+<p>OpenAPI提供了全部HTTP方法，包括<code>[&quot;GET&quot;, &quot;POST&quot;, &quot;PUT&quot;, &quot;DELETE&quot;, &quot;HEAD&quot;, &quot;OPTIONS&quot;, &quot;PATCH&quot;]</code>，<br>统一通过<code>$.http</code>调用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GET</span></span><br><span class="line"><span class="comment">// 简单的请求一个URL</span></span><br><span class="line">$.http.<span class="title function_">get</span>(<span class="string">&quot;https://postman-echo.com/get?foo1=bar1&amp;foo2=bar2&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">resp</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// PUT</span></span><br><span class="line"><span class="comment">// 请求加入一些自定义参数</span></span><br><span class="line">$.http.<span class="title function_">put</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;https://postman-echo.com/put&quot;</span>,</span><br><span class="line">    <span class="attr">body</span>: <span class="string">&quot;HELLO&quot;</span>, <span class="comment">// 设置请求body</span></span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;, <span class="comment">// 设置请求头</span></span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">200</span> <span class="comment">// 设置请求超时为200ms,</span></span><br><span class="line">    <span class="comment">// 一些钩子函数</span></span><br><span class="line">    <span class="attr">events</span>: &#123;</span><br><span class="line">      <span class="attr">onRequest</span>: <span class="function">(<span class="params">method, options</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 请求之前可以做一些操作，比如log，注意method和options无法修改</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">onResponse</span>: <span class="function">(<span class="params">resp</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 请求之后可以对resp做修改，记得返回resp！</span></span><br><span class="line">        resp.<span class="property">body</span> = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(resp.<span class="property">body</span>);</span><br><span class="line">        <span class="keyword">return</span> resp;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">onTimeout</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// timeout的处理，比如可以退出APP</span></span><br><span class="line">        $.<span class="title function_">done</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>或者你可以使用自定义参数的HTTP对象，实现一些自定义的配置。例如我们可以这样设置默认的baseURL以及默认的请求参数，比如：</p>
+<ul>
+<li>headers</li>
+<li>timeout</li>
+<li>events</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.http = <span class="title function_">HTTP</span>(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&quot;https://www.baidu.com&quot;</span>,</span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;OpenAPI&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">events</span>: &#123;</span><br><span class="line">    <span class="attr">onTimeout</span>: <span class="function">() =&gt;</span> $.<span class="title function_">error</span>(<span class="string">&quot;OH NO!&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置默认的baseURL为api.github.com，并设置鉴权token</span></span><br><span class="line">$.http = <span class="title function_">HTTP</span>(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&quot;https://api.github.com&quot;</span>, </span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="title class_">Authorization</span>: <span class="string">`token MY_TOKEN`</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>:</span><br><span class="line">        <span class="string">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$.http.<span class="title function_">get</span>(<span class="string">&quot;/gists&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">resp</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">write</span>(<span class="string">&quot;VALUE&quot;</span>, <span class="string">&quot;KEY&quot;</span>); <span class="comment">// 将VALUE保存到KEY中</span></span><br><span class="line">$.<span class="title function_">read</span>(<span class="string">&quot;KEY&quot;</span>); <span class="comment">// 将KEY的值取出</span></span><br><span class="line">$.<span class="title function_">delete</span>(<span class="string">&quot;KEY&quot;</span>); <span class="comment">// 删除KEY的值</span></span><br><span class="line">$.cache; <span class="comment">// 当前脚本所有的缓存</span></span><br><span class="line">$.<span class="title function_">done</span>();</span><br></pre></td></tr></table></figure>
+
+<p>持久化在OpenAPI中得到了巨大改进，在不同环境下，其表现如下：</p>
+<h4 id="1-QX-Loon-Surge"><a href="#1-QX-Loon-Surge" class="headerlink" title="1. QX &amp; Loon &amp; Surge"></a>1. QX &amp; Loon &amp; Surge</h4><p>整个API对象共用一个<code>cache</code>，所以<code>$.write(&quot;VALUE&quot;, &quot;KEY&quot;)</code>其实只是把值保存到<code>cache</code>中。然后<code>cache</code>会被以<code>name</code>属性作为key保存到<code>$prefs</code>或者<code>$persistentStore</code>中。这形成了每个脚本独自的缓存空间，避免key碰撞的情况产生。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $1 = <span class="title function_">API</span>(<span class="string">&quot;APP1&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> $2 = <span class="title function_">API</span>(<span class="string">&quot;APP2&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是安全的！</span></span><br><span class="line">$1.<span class="title function_">write</span>(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;key&quot;</span>);</span><br><span class="line">$2.<span class="title function_">write</span>(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;key&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Node-JSBox-2-0"><a href="#2-Node-JSBox-2-0" class="headerlink" title="2. Node &amp; JSBox (2.0+)"></a>2. Node &amp; JSBox (2.0+)</h4><p>Node环境中，<code>cache</code>会被保存到和脚本同级目录下的<code>name.json</code>中。</p>
+<p><strong>如果希望在脚本里直接存取<code>$prefs</code>或者<code>$persistentStore</code>里面的缓存，可以通过在<code>KEY</code>前面加<code>#</code>号实现：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">read</span>(<span class="string">&quot;#KEY&quot;</span>);</span><br><span class="line">$.<span class="title function_">write</span>(value, <span class="string">&quot;#KEY&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="延时"><a href="#延时" class="headerlink" title="延时"></a>延时</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">wait</span>(<span class="number">1000</span>).<span class="title function_">then</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// 等待1000毫秒之后执行</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在任何Promise后面可以自定义delay</span></span><br><span class="line">$.<span class="title function_">get</span>(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">.<span class="title function_">delay</span>(<span class="number">1000</span>) <span class="comment">// 延迟1000毫秒</span></span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">resp</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something with response.</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>更全面的用法请查看<code>example.js</code>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>substore OpenAPI</div>
+      <div>http://example.com/lyyy/substore OpenAPI/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/Python%20%E5%92%8C%20Java%20%E6%98%AF%E4%B8%A4%E7%A7%8D%E6%B5%81%E8%A1%8C%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="Python 和 Java 是两种流行的编程语言">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python 和 Java 是两种流行的编程语言</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/substore%E8%84%9A%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="substore脚本操作">
+                        <span class="hidden-mobile">substore脚本操作</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

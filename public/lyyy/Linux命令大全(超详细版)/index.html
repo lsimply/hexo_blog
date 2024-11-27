@@ -1,0 +1,928 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="Linux命令大全(超详细版)1.简单系统命令12345678910111213141516# 查看ip地址	ip a	ip addr# ping网络(测试网络连通)	ping 目标机器的ip# 查看系统时间	date# 注销	logout# 关机	shutdown now# 重启	reboot# 清屏	clear123456789101112131415  2.Linux文件系统 核心   1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令大全(超详细版)">
+<meta property="og:url" content="http://example.com/lyyy/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8(%E8%B6%85%E8%AF%A6%E7%BB%86%E7%89%88)/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="Linux命令大全(超详细版)1.简单系统命令12345678910111213141516# 查看ip地址	ip a	ip addr# ping网络(测试网络连通)	ping 目标机器的ip# 查看系统时间	date# 注销	logout# 关机	shutdown now# 重启	reboot# 清屏	clear123456789101112131415  2.Linux文件系统 核心   1.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b6dedb58c8b570b5e530b9d426de015f.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/72686490a9fbd64ed0850c833e136e28.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f33101a860bc5a42bf8cb4767e4a57e7.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/9a97cfb63a445ef7214cb94f6d58cce1.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/34c8eabf3bb9494d6375938b4f0494b7.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/297f0edfdb54c4071cdad9aca6b6a1cf.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3de3cbc1b7e1f4f7f302a21028a346b4.png#pic_center">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/c0f3ef45c3b90b0520355a0703bacb03.png#pic_center">
+<meta property="article:published_time" content="2024-10-30T12:14:20.831Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.497Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/b6dedb58c8b570b5e530b9d426de015f.png#pic_center">
+  
+  
+  
+  <title>Linux命令大全(超详细版) - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux命令大全(超详细版)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-30 20:14" pubdate>
+          2024年10月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux命令大全(超详细版)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Linux命令大全-超详细版"><a href="#Linux命令大全-超详细版" class="headerlink" title="Linux命令大全(超详细版)"></a>Linux命令大全(超详细版)</h2><h3 id="1-简单系统命令"><a href="#1-简单系统命令" class="headerlink" title="1.简单系统命令"></a>1.简单系统命令</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 查看ip地址</span></span><br><span class="line"><span class="code">	ip a</span></span><br><span class="line"><span class="code">	ip addr</span></span><br><span class="line"><span class="code"># ping网络(测试网络连通)</span></span><br><span class="line"><span class="code">	ping 目标机器的ip</span></span><br><span class="line"><span class="code"># 查看系统时间</span></span><br><span class="line"><span class="code">	date</span></span><br><span class="line"><span class="code"># 注销</span></span><br><span class="line"><span class="code">	logout</span></span><br><span class="line"><span class="code"># 关机</span></span><br><span class="line"><span class="code">	shutdown now</span></span><br><span class="line"><span class="code"># 重启</span></span><br><span class="line"><span class="code">	reboot</span></span><br><span class="line"><span class="code"># 清屏</span></span><br><span class="line"><span class="code">	clear</span></span><br><span class="line"><span class="code">123456789101112131415</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Linux文件系统"><a href="#2-Linux文件系统" class="headerlink" title="2.Linux文件系统"></a>2.Linux文件系统</h3><ul>
+<li>核心</li>
+</ul>
+<blockquote>
+<p>1.Linux一切皆文件</p>
+<p>2.只有一个顶级目录，不像windows分C盘、D盘、E盘</p>
+</blockquote>
+<ul>
+<li>目录结构</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6dedb58c8b570b5e530b9d426de015f.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li>文件含义</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Linux</th>
+<th>含义</th>
+<th>windows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;bin</td>
+<td>所有用户可用的基本命令存放的位置</td>
+<td>windows没有固定的命令存放目录</td>
+</tr>
+<tr>
+<td>&#x2F;sbin</td>
+<td>需要管理员权限才能使用的命令</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>linux系统启动的时候需要加载和使用的文件</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x2F;dev</td>
+<td>外设连接linux后，对应的文件存放的位置</td>
+<td>类似Windows中的U盘，光盘的符号文件。</td>
+</tr>
+<tr>
+<td>&#x2F;etc</td>
+<td>存放系统或者安装的程序的配置文件,注册服务等</td>
+<td>类似windows中的注册表，</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>家目录，linux中每新建一个用户，会自动在home中为该用户分配一个文件夹</td>
+<td>类似windows中的”我的文档”，每个用户有自己的目录。</td>
+</tr>
+<tr>
+<td>&#x2F;root</td>
+<td>root账户的家目录，仅供root账户使用</td>
+<td>类似windows中的Administrator账户的”我的文档”</td>
+</tr>
+<tr>
+<td>&#x2F;lib</td>
+<td>linux的命令和系统启动，需要使用一些公共的依赖，放在lib中，类似我们开发的代码执行需要引入的jdk的jar</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x2F;usr</td>
+<td>很多系统软件的默认安装路径</td>
+<td>类似windows中的C盘下的Program Files目录。</td>
+</tr>
+<tr>
+<td>&#x2F;var</td>
+<td>系统和程序运行产生的日志文件和缓存文件放在这里</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="3-文件管理命令"><a href="#3-文件管理命令" class="headerlink" title="3. 文件管理命令"></a>3. 文件管理命令</h4><blockquote>
+<p>注意事项：命令区分大小写</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 1. 查看文件列表</span></span><br><span class="line"><span class="code">	ls [-参数1参数2] [目标文件夹]</span></span><br><span class="line"><span class="code">12</span></span><br><span class="line"><span class="code"># 查看当前目录下的文件列表</span></span><br><span class="line"><span class="code">	ls</span></span><br><span class="line"><span class="code"># 查看指定目录下的文件</span></span><br><span class="line"><span class="code">	ls /</span></span><br><span class="line"><span class="code"># 查看详细信息，元数据信息(用户、组、大小、创建时间、权限信息、文件类型)</span></span><br><span class="line"><span class="code">	ls -l</span></span><br><span class="line"><span class="code"># 查看隐藏文件</span></span><br><span class="line"><span class="code">	ls -a </span></span><br><span class="line"><span class="code"># 参数并用</span></span><br><span class="line"><span class="code">	ls -la</span></span><br><span class="line"><span class="code">12345678910</span></span><br><span class="line"><span class="code"># 2. 切换目录</span></span><br><span class="line"><span class="code">	cd 目标文件夹</span></span><br><span class="line"><span class="code">12</span></span><br><span class="line"><span class="code"># 绝对路径切换</span></span><br><span class="line"><span class="code">	cd 绝对路径</span></span><br><span class="line"><span class="code"># 相对路径切换</span></span><br><span class="line"><span class="code">	cd 相对路径</span></span><br><span class="line"><span class="code"># 例子：切换到/etc/sysconfig/networks-scripts 目录下</span></span><br><span class="line"><span class="code">12345</span></span><br><span class="line"><span class="code"># 3. 查看当前命令所在的目录</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code">[root@centos7 network-scripts]# pwd</span></span><br><span class="line"><span class="code">/etc/sysconfig/network-scripts</span></span><br><span class="line"><span class="code"># 特殊目录符号</span></span><br><span class="line"><span class="code">	~ 当前用户的home目录</span></span><br><span class="line"><span class="code">	. 当前目录</span></span><br><span class="line"><span class="code">	.. 上一级目录</span></span><br><span class="line"><span class="code">123456</span></span><br><span class="line"><span class="code"># 4. 新建文件夹及文件</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 在当前位置新建文件夹</span></span><br><span class="line"><span class="code">	mkdir 文件夹名</span></span><br><span class="line"><span class="code"># 在指定目录位置，创建文件夹，并创建父文件夹</span></span><br><span class="line"><span class="code">	mkdir -p /a/b/文件夹名</span></span><br><span class="line"><span class="code"># 在当前目录下新建文件</span></span><br><span class="line"><span class="code">	touch 文件名</span></span><br><span class="line"><span class="code">123456</span></span><br><span class="line"><span class="code"># 5. 删除文件</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 删除文件</span></span><br><span class="line"><span class="code">	rm 文件</span></span><br><span class="line"><span class="code"># 删除文件夹</span></span><br><span class="line"><span class="code">	rm -r 文件夹</span></span><br><span class="line"><span class="code"># 强制删除不询问</span></span><br><span class="line"><span class="code">	rm -rf 文件</span></span><br><span class="line"><span class="code">123456</span></span><br><span class="line"><span class="code"># 6. 拷贝文件</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 拷贝文件</span></span><br><span class="line"><span class="code">	cp 原文件  新文件</span></span><br><span class="line"><span class="code"># 拷贝文件夹</span></span><br><span class="line"><span class="code">	cp -r 源文件夹 新文件夹</span></span><br><span class="line"><span class="code">1234</span></span><br><span class="line"><span class="code"># 7. 移动文件或修改文件名</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 移动源文件到目标文件夹中</span></span><br><span class="line"><span class="code">	mv 文件  文件夹</span></span><br><span class="line"><span class="code"># 修改文件A的名字为文件B</span></span><br><span class="line"><span class="code">	mv 文件A 文件B</span></span><br><span class="line"><span class="code">1234</span></span><br><span class="line"><span class="code"># 8. 获取文件的md5指纹(数字签名)</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code">md5sum 文件名</span></span><br><span class="line"><span class="code"># 简介</span></span><br><span class="line"><span class="code">1. 数字签名，又称数字指纹</span></span><br><span class="line"><span class="code">2. 可以验证文件是否被修改</span></span><br><span class="line"><span class="code">3. 一个文件通过计算得到的一串字符串,文件内容的唯一标记(文件内容不变,指纹不会变)</span></span><br><span class="line"><span class="code">12345</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-文本内容查看命令"><a href="#4-文本内容查看命令" class="headerlink" title="4. 文本内容查看命令"></a>4. 文本内容查看命令</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># cat命令</span></span><br><span class="line">1</span><br><span class="line"><span class="section"># 查看文件中的全部信息(适合查看小文档)</span></span><br><span class="line"><span class="code">	cat 文件名</span></span><br><span class="line"><span class="code">12</span></span><br><span class="line"><span class="code"># less命令</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 以分页的方式浏览文件信息(适合查看大文档)，进入浏览模式</span></span><br><span class="line"><span class="code">	less 文件名</span></span><br><span class="line"><span class="code"># 浏览模式快捷键</span></span><br><span class="line"><span class="code">	↑ #上一行</span></span><br><span class="line"><span class="code">    ↓ #下一行</span></span><br><span class="line"><span class="code">    G #最后一页</span></span><br><span class="line"><span class="code">    g #第一页</span></span><br><span class="line"><span class="code">    空格 #下一页</span></span><br><span class="line"><span class="code">    /关键词 #搜索关键词</span></span><br><span class="line"><span class="code"># 退出浏览模式，回到Linux命令行模式</span></span><br><span class="line"><span class="code">    q #退出</span></span><br><span class="line"><span class="code">1234567891011</span></span><br><span class="line"><span class="code"># tail 命令</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 实时滚动显示文件的最后10行信息(默认10行)</span></span><br><span class="line"><span class="code">tail -f 文件名</span></span><br><span class="line"><span class="code"># 显示文件的最后20行信息</span></span><br><span class="line"><span class="code">tail -n 20 文件名</span></span><br><span class="line"><span class="code">tail -n -20 文件名</span></span><br><span class="line"><span class="code"># 显示文件信息从第20行至文件末尾</span></span><br><span class="line"><span class="code">tail -n +20 文件名</span></span><br><span class="line"><span class="code">1234567</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-文件查找"><a href="#5-文件查找" class="headerlink" title="5. 文件查找"></a>5. 文件查找</h4><ol>
+<li><p>文件名查找</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 语法</span></span><br><span class="line"><span class="code">	find 搜索路径 -name &quot;文件名关键词&quot;</span></span><br><span class="line"><span class="code"># 例子</span></span><br><span class="line"><span class="code">	find / -name &quot;passwd&quot;</span></span><br><span class="line"><span class="code">	find / -name &quot;ifcfg-*&quot;</span></span><br><span class="line"><span class="code">12345</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件内容查找</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 语法</span></span><br><span class="line"><span class="code">	grep -参数 要查找的目录范围</span></span><br><span class="line"><span class="code">	# 参数</span></span><br><span class="line"><span class="code">	-n 显示查找结果所在行号</span></span><br><span class="line"><span class="code">	-R 递归查找目录下的所有文件</span></span><br><span class="line"><span class="code"># 例子</span></span><br><span class="line"><span class="code">	grep aries /etc</span></span><br><span class="line"><span class="code">	grep aries /etc/passwd</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">123456789</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="6-文件链接"><a href="#6-文件链接" class="headerlink" title="6. 文件链接"></a>6. 文件链接</h4><ol>
+<li>Linux文件管理</li>
+</ol>
+<ul>
+<li>模型图</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/72686490a9fbd64ed0850c833e136e28.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li><p>说明</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 文件名</span></span><br><span class="line"><span class="code">	该文件的名字</span></span><br><span class="line"><span class="code"># inode</span></span><br><span class="line"><span class="code">	该文件的元数据</span></span><br><span class="line"><span class="code"># datablock</span></span><br><span class="line"><span class="code">	该文件真正保存的数据</span></span><br><span class="line"><span class="code">123456</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>1、inode中保存的是文件的元数据</p>
+<p>2、ls命令查看的都是linux的元数据信息</p>
+<p>3、数据块中才是文件的真正数据</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>硬链接</li>
+</ol>
+<ul>
+<li>图</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f33101a860bc5a42bf8cb4767e4a57e7.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li><p>命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln 源文件 硬链接文件</span><br><span class="line">1</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>软连接</li>
+</ol>
+<ul>
+<li>图</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9a97cfb63a445ef7214cb94f6d58cce1.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li><p>命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s 目标文件或文件夹 软连接名字</span><br><span class="line">1</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="7-系统管理"><a href="#7-系统管理" class="headerlink" title="7. 系统管理"></a>7. 系统管理</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 静态查看系统进程</span></span><br><span class="line"><span class="code">	ps -aux</span></span><br><span class="line"><span class="code">12</span></span><br><span class="line"><span class="code"># 实时查看系统进程</span></span><br><span class="line"><span class="code">	top</span></span><br><span class="line"><span class="code">	# 快捷键</span></span><br><span class="line"><span class="code">		↑ 下翻</span></span><br><span class="line"><span class="code">		↓ 上翻</span></span><br><span class="line"><span class="code">		q 退出</span></span><br><span class="line"><span class="code">123456</span></span><br><span class="line"><span class="code"># 关闭进程</span></span><br><span class="line"><span class="code">	kill 进程id </span></span><br><span class="line"><span class="code"># 强制关闭进程(谨慎使用)</span></span><br><span class="line"><span class="code">	kill -9 进程id</span></span><br><span class="line"><span class="code">1234</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-输出"><a href="#8-输出" class="headerlink" title="8. 输出"></a>8. 输出</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 覆盖输出</span></span><br><span class="line">1</span><br><span class="line"><span class="section"># 将命令1的执行结果，输出到后面的文件中。</span></span><br><span class="line"><span class="code">`覆盖写入`</span></span><br><span class="line"><span class="code">	命令1 &gt; 文件</span></span><br><span class="line"><span class="code"># 例子</span></span><br><span class="line"><span class="code">	date &gt; date.log</span></span><br><span class="line"><span class="code">12345</span></span><br><span class="line"><span class="code"># 追加输出</span></span><br><span class="line"><span class="code">1</span></span><br><span class="line"><span class="code"># 将命令1的执行结果，输出到后面的文件中。</span></span><br><span class="line"><span class="code">`追加写入`</span></span><br><span class="line"><span class="code">	命令1 &gt;&gt; 文件</span></span><br><span class="line"><span class="code"># 例子</span></span><br><span class="line"><span class="code">	date &gt;&gt; date.log</span></span><br><span class="line"><span class="code">12345</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="9-管道"><a href="#9-管道" class="headerlink" title="9. 管道"></a>9. 管道</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 管道</span></span><br><span class="line">1</span><br><span class="line"><span class="section"># 语法，将命令1的输出结果，作为命令2的输入</span></span><br><span class="line">命令1 | 命令2</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/34c8eabf3bb9494d6375938b4f0494b7.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例子</span></span><br><span class="line">查找aries用户：cat /etc/passwd | grep -n “baizhi”</span><br><span class="line">查找aries组：cat /etc/group | grep -n “baizhi”</span><br><span class="line">查找sshd进程：ps -aux | grep sshd</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-文件编辑"><a href="#9-文件编辑" class="headerlink" title="9. 文件编辑"></a>9. 文件编辑</h4><blockquote>
+<p>配置<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=MobaXterm&spm=1001.2101.3001.7020">MobaXterm</a>的默认文本编辑器</p>
+<p>免去<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vim%E5%91%BD%E4%BB%A4&spm=1001.2101.3001.7020">vim命令</a>的麻烦</p>
+</blockquote>
+<h3 id="系统权限"><a href="#系统权限" class="headerlink" title="系统权限"></a>系统权限</h3><h4 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h4><ul>
+<li>图</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/297f0edfdb54c4071cdad9aca6b6a1cf.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li><p>相关命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 创建组</span><br><span class="line">  `groupadd 组名`</span><br><span class="line">2. 删除组</span><br><span class="line">  `groupdel 组名`</span><br><span class="line">3. 查找系统中的组</span><br><span class="line">  `cat /etc/group | grep -n “组名”`</span><br><span class="line">  说明：系统每个组信息都会被存放在/etc/group的文件中</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h4><ul>
+<li><p>相关命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 创建用户</span><br><span class="line">  `useradd -g 组名 用户名`</span><br><span class="line">2. 设置密码</span><br><span class="line">  `passwd 用户名`</span><br><span class="line">3. 查找系统账户</span><br><span class="line">  说明：系统每个用户信息保存在`/etc/passwd`文件中</span><br><span class="line">4. 切换用户</span><br><span class="line">  `su 用户名`</span><br><span class="line">5. 删除用户</span><br><span class="line">  `userdel -r 用户名`</span><br><span class="line">12345678910</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h4><ul>
+<li><p>问题</p>
+<p>linux系统未来可能有程序员、用户、数据库管理员、项目经理等各种角色各种级别人使用，甚至还有身份不明的人链接到linux，控制不好权限容易导致系统崩溃、数据丢失等问题。</p>
+</li>
+<li><p>权限含义</p>
+<table>
+<thead>
+<tr>
+<th>权限字母</th>
+<th>含义</th>
+<th>对文件</th>
+<th>代表命令</th>
+<th>对文件夹</th>
+<th>代表命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R®</td>
+<td>读</td>
+<td>查看文件内容和复制文件</td>
+<td>more cat less cp head tail</td>
+<td>查看文件夹下的文件</td>
+<td>ls</td>
+</tr>
+<tr>
+<td>W(w)</td>
+<td>写</td>
+<td>编辑文件</td>
+<td>vi</td>
+<td>在文件夹内创建和删除文件</td>
+<td>rm touch</td>
+</tr>
+<tr>
+<td>X(x)</td>
+<td>执行</td>
+<td>执行该文件(执行必须具备r权限)</td>
+<td>-</td>
+<td>切换到文件夹</td>
+<td>cd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>权限访问控制列表(ACL access controll list)</p>
+</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3de3cbc1b7e1f4f7f302a21028a346b4.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<ul>
+<li><p>命令</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 查看权限</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -la 文件</span><br><span class="line">ll 文件</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 设置文件所有者</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">语法：chown [-R] user名:group名 文件名</span><br><span class="line">参数：-R 如果是文件夹，需要使用这个参数，可以将文件夹及其内部所有文件的所有者和组全部修改</span><br><span class="line">注意：命令权限需要root</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件所有者</span></span></span><br><span class="line">	chown 用户名 文件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件所属组</span></span></span><br><span class="line">	chown :组名 文件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件所有者和所属组</span></span></span><br><span class="line">	chown 用户名:组名 文件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件夹的所有者和所属组</span></span></span><br><span class="line">	chown [-R] 用户名:组名 文件夹</span><br><span class="line">1234567891011</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 权限设置1</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">语法：chmod u±rwx,g±rwx,o±rwx 文件名</span><br><span class="line">运算符：</span><br><span class="line">	- 删除权限</span><br><span class="line">	+ 添加权限</span><br><span class="line">	= 赋值权限</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 给文件的所有者添加执行权限</span></span></span><br><span class="line">chmod u+x 文件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 给文件的其他人删除所有权限</span></span></span><br><span class="line">chmod o-rwx 文件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 给文件的所属组设置读写权限</span></span></span><br><span class="line">chmod g=wx 文件名</span><br><span class="line">1234567891011</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 权限设置2</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c0f3ef45c3b90b0520355a0703bacb03.png#pic_center" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件的每个归属方的权限的值使用rwx之和计算出来的。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">语法</span></span><br><span class="line">	`chmod [-R] nnn 文件` </span><br><span class="line">	-R 递归设置文件夹内所有文件</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置文件的权限为(所有者可读可写可执行，所属组可读可写，其他人可读)</span></span><br><span class="line">	chmod 764 文件名</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统软件管理"><a href="#系统软件管理" class="headerlink" title="系统软件管理"></a>系统软件管理</h3><h4 id="压缩解压缩"><a href="#压缩解压缩" class="headerlink" title="压缩解压缩"></a>压缩解压缩</h4><blockquote>
+<p>压缩语法：<code>tar -zcvf 压缩后文件名 被压缩文件</code></p>
+<p>解压缩语法 <code>tar -zxvf 压缩文件名 -C 解压后文件所在目录</code></p>
+<p>参数1：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-z</td>
+<td>操作tar.gz文件需要使用</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>解压缩</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>压缩</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示压缩或者解压缩的执行过程信息</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>要处理的文件file，必须放在最后</td>
+</tr>
+</tbody></table>
+<p>参数2：-C 指定解压后的文件存放的位置</p>
+</blockquote>
+<h4 id="rpm软件"><a href="#rpm软件" class="headerlink" title="rpm软件"></a>rpm软件</h4><blockquote>
+<p>简介：类似于windows中的.exe程序</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 安装rpm软件</span><br><span class="line">  语法：`rpm -ivh xxx.rpm`</span><br><span class="line">2. 查看系统中是否已安装的过该rpm软件</span><br><span class="line">  语法：`rpm -qa 软件名`</span><br><span class="line">3. 卸载rpm软件</span><br><span class="line">  语法：`rpm -e 软件名`</span><br><span class="line">4. 例子：安装tree工具</span><br><span class="line">  作用：查看某个目录下的文件信息</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">以树状结构查看2层文件信息</span></span><br><span class="line">  tree -L 2 要查看的路径</span><br><span class="line">12345678910</span><br></pre></td></tr></table></figure>
+
+<h4 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h4><blockquote>
+<p>yum基于rpm实现的，提供了除了rpm的安装软件、卸载软件等功能以外还有，自动查找、下载软件并自动处理软件的彼此之间的依赖关系，下载并安装依赖包。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 列出所有可以安装的软件包</span></span></span><br><span class="line">	yum list</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 安装软件</span></span></span><br><span class="line">	yum install -y 软件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 卸载软件</span></span></span><br><span class="line">	yum remove 软件名</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查找软件包</span></span></span><br><span class="line">	yum search all 软件名</span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+
+<h4 id="Linux服务"><a href="#Linux服务" class="headerlink" title="Linux服务"></a>Linux服务</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 例如：sshd network firewalld 等</span></span><br><span class="line">1</span><br><span class="line"><span class="section"># 服务器管理命令</span></span><br><span class="line"><span class="code">	systemctl status 服务名</span></span><br><span class="line"><span class="code"># 启动服务</span></span><br><span class="line"><span class="code">	systemctl start 服务名</span></span><br><span class="line"><span class="code"># 重启服务</span></span><br><span class="line"><span class="code">	systemctl restart 服务名</span></span><br><span class="line"><span class="code"># 停止服务</span></span><br><span class="line"><span class="code">	systemctl stop 服务名</span></span><br><span class="line"><span class="code"># 禁止服务随linux启动。</span></span><br><span class="line"><span class="code">	systemctl disable 服务名</span></span><br><span class="line"><span class="code"># 设置服务随linux启动。</span></span><br><span class="line"><span class="code">	systemctl enable 服务名</span></span><br><span class="line"><span class="code">123456789101112</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="ip设置"><a href="#ip设置" class="headerlink" title="ip设置"></a>ip设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">服务名:network</span><br><span class="line">[root@centos7 dirnew]# vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line">----------------网卡对应的文件内容---------------------</span><br><span class="line">    TYPE=&quot;Ethernet&quot;</span><br><span class="line">    PROXY_METHOD=&quot;none&quot;</span><br><span class="line">    BROWSER_ONLY=&quot;no&quot;</span><br><span class="line">    BOOTPROTO=&quot;none&quot;</span><br><span class="line">    DEFROUTE=&quot;yes&quot;</span><br><span class="line">    IPV4_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">    IPV6INIT=&quot;yes&quot;</span><br><span class="line">    IPV6_AUTOCONF=&quot;yes&quot;</span><br><span class="line">    IPV6_DEFROUTE=&quot;yes&quot;</span><br><span class="line">    IPV6_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">    IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;</span><br><span class="line">    NAME=&quot;ens33&quot;</span><br><span class="line">    UUID=&quot;0bd5d8a5-fe1b-42de-82bd-bfa7d2984b95&quot;</span><br><span class="line">    DEVICE=&quot;ens33&quot;</span><br><span class="line">    ONBOOT=&quot;yes&quot;</span><br><span class="line">    IPADDR=&quot;192.168.199.8&quot; # 修改这里的ip地址即可</span><br><span class="line">    PREFIX=&quot;24&quot;</span><br><span class="line">    GATEWAY=&quot;192.168.199.2&quot;</span><br><span class="line">    DNS1=&quot;192.168.199.2&quot;</span><br><span class="line">    DNS2=&quot;8.8.8.8&quot;</span><br><span class="line">    IPV6_PRIVACY=&quot;no&quot;</span><br><span class="line">[root@centos7 dirnew]# systemctl restart network #重启网卡服务</span><br><span class="line"></span><br><span class="line">123456789101112131415161718192021222324</span><br></pre></td></tr></table></figure>
+
+<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">服务名:firewalld</span><br><span class="line"># 开启防火墙</span><br><span class="line">systemctl start 服务名</span><br><span class="line"># 关闭防火墙(服务器重启后还会自动开启防火墙)</span><br><span class="line">systemctl stop firewalld</span><br><span class="line"># 禁止防火墙开机启动</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<h4 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看主机名</span></span><br><span class="line">hostname</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置主机名</span></span><br><span class="line">hostnamectl set-hostname 主机名</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+
+<h4 id="ip映射"><a href="#ip映射" class="headerlink" title="ip映射"></a>ip映射</h4><ul>
+<li><p>域名解析</p>
+</li>
+<li><p>本地hosts编辑</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]# vim /etc/hosts</span><br><span class="line">--------------下面是文件------------------</span><br><span class="line">	192.168.199.8 centos7</span><br><span class="line">123</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程登录linux</span></span><br><span class="line">ssh 远程linux的ip或者映射域名</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h4 id="免密登录"><a href="#免密登录" class="headerlink" title="免密登录"></a>免密登录</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 简介</span></span><br><span class="line">ssh登录远程linux，免去输入密码的麻烦</span><br><span class="line">12</span><br><span class="line"><span class="section"># 生成公钥和私钥</span></span><br><span class="line">[root@centos7 ~]# ssh-keygen</span><br><span class="line">------------执行结果-----------</span><br><span class="line"><span class="code">    [root@centos7 ~]# tree .ssh</span></span><br><span class="line"><span class="code">    .ssh</span></span><br><span class="line"><span class="code">    ├── id_rsa # 私钥</span></span><br><span class="line"><span class="code">    ├── id_rsa.pub # 公钥</span></span><br><span class="line"><span class="code">    └── known_hosts</span></span><br><span class="line"><span class="code"># 发送公钥</span></span><br><span class="line"><span class="code">	`保存公钥的文件为/root/.ssh/authorized_keys`</span></span><br><span class="line"><span class="code">[root@centos7 .ssh]# cat id_rsa.pub &gt; authorized_keys</span></span><br><span class="line"><span class="code"># 发送公钥</span></span><br><span class="line"><span class="code">[root@centos7 .ssh]# ssh-copy-id 目标主机的ip</span></span><br><span class="line"><span class="code">12345678910111213</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="远程拷贝"><a href="#远程拷贝" class="headerlink" title="远程拷贝"></a>远程拷贝</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp 本地的文件 root@远程linuxip:/远程linux的文件路径</span><br><span class="line">scp -r 本地的目录 root@远程linuxip:/远程linux的文件路径</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h4 id="必要软件安装"><a href="#必要软件安装" class="headerlink" title="必要软件安装"></a>必要软件安装</h4><ol>
+<li><p>vim(vi编辑器增强版)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim 文件</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>wget(下载器)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget url</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tree(目录树状显示)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以tree结构，递归显示当前文件下所有文件</span></span><br><span class="line">	tree</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示目标文件夹下的文件</span></span><br><span class="line">	tree 目标目录</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>psmisc(高级进程管理工具)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以tree形式显示系统目前进程</span></span><br><span class="line">	pstree</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">杀死进程</span></span><br><span class="line">	killall 进程名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示该文件被哪个进程使用</span></span><br><span class="line">	fuser /目标文件</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jdk安装</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux命令大全(超详细版)</div>
+      <div>http://example.com/lyyy/Linux命令大全(超详细版)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/%E3%80%901%E3%80%91VI%E4%B8%8EVIM%E5%8C%BA%E5%88%AB/" title="【1】VI与VIM区别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【1】VI与VIM区别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/docker%E9%95%9C%E5%83%8F%E7%9B%B8%E5%85%B3/" title="docker镜像相关">
+                        <span class="hidden-mobile">docker镜像相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

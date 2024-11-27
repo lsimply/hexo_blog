@@ -1,0 +1,1200 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LYYY">
+  <meta name="keywords" content="lyyy">
+  
+    <meta name="description" content="2 Nginx 目录结构及配置文件详解2.1 Nginx 目录结构分析在使用Nginx之前，我们先对安装好的Nginx目录文件进行一个分析，在这块给大家介绍一个工具tree，通过tree我们可以很方面的去查看centos系统上的文件目录结构，当然，如果想使用tree工具，就得先通过yum install -y tree来进行安装，安装成功后，可以通过执行tree &#x2F;usr&#x2F;local&#x2F;nginx(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置">
+<meta property="og:url" content="http://example.com/lyyy/nginx%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="LYYY">
+<meta property="og:description" content="2 Nginx 目录结构及配置文件详解2.1 Nginx 目录结构分析在使用Nginx之前，我们先对安装好的Nginx目录文件进行一个分析，在这块给大家介绍一个工具tree，通过tree我们可以很方面的去查看centos系统上的文件目录结构，当然，如果想使用tree工具，就得先通过yum install -y tree来进行安装，安装成功后，可以通过执行tree &#x2F;usr&#x2F;local&#x2F;nginx(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111165836807.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170340002.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581444603231.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1586368250085.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170130395.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172704225.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172724686.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111180913679.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181001627.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181505488.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181702718.png">
+<meta property="og:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581566971955.png">
+<meta property="article:published_time" content="2024-10-30T11:25:29.665Z">
+<meta property="article:modified_time" content="2024-11-25T11:44:04.479Z">
+<meta property="article:author" content="LYYY">
+<meta property="article:tag" content="lyyy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111165836807.png">
+  
+  
+  
+  <title>nginx配置 - LYYY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LYYY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="nginx配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-30 19:25" pubdate>
+          2024年10月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">nginx配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="2-Nginx-目录结构及配置文件详解"><a href="#2-Nginx-目录结构及配置文件详解" class="headerlink" title="2 Nginx 目录结构及配置文件详解"></a>2 Nginx 目录结构及配置文件详解</h1><h2 id="2-1-Nginx-目录结构分析"><a href="#2-1-Nginx-目录结构分析" class="headerlink" title="2.1 Nginx 目录结构分析"></a>2.1 Nginx 目录结构分析</h2><p>在使用Nginx之前，我们先对安装好的Nginx目录文件进行一个分析，在这块给大家介绍一个工具tree，通过tree我们可以很方面的去查看centos系统上的文件目录结构，当然，如果想使用tree工具，就得先通过<code>yum install -y tree</code>来进行安装，安装成功后，可以通过执行<code>tree /usr/local/nginx</code>(tree后面跟的是Nginx的安装目录)，获取的结果如下：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111165836807.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111165836807.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<ul>
+<li><p>conf:nginx所有配置文件目录</p>
+<ul>
+<li>CGI(Common Gateway Interface)通用网关【接口】，主要解决的问题是从客户端发送一个请求和数据，服务端获取到请求和数据后可以调用调用CGI【程序】处理及相应结果给客户端的一种标准规范。</li>
+</ul>
+</li>
+<li><p>fastcgi.conf:fastcgi相关配置文件</p>
+</li>
+<li><p>fastcgi.conf.default:fastcgi.conf的备份文件</p>
+</li>
+<li><p>fastcgi_params:fastcgi的参数文件</p>
+</li>
+<li><p>fastcgi_params.default:fastcgi的参数备份文件</p>
+</li>
+<li><p>scgi_params:scgi的参数文件</p>
+</li>
+<li><p>scgi_params.default：scgi的参数备份文件</p>
+</li>
+<li><p>uwsgi_params:uwsgi的参数文件</p>
+</li>
+<li><p>uwsgi_params.default:uwsgi的参数备份文件</p>
+</li>
+<li><p>mime.types:记录的是HTTP协议中的Content-Type的值和文件后缀名的对应关系</p>
+</li>
+<li><p>mime.types.default:mime.types的备份文件</p>
+</li>
+<li><p>nginx.conf:这个是Nginx的核心配置文件，这个文件非常重要，也是我们即将要学习的重点</p>
+</li>
+<li><p>nginx.conf.default:nginx.conf的备份文件</p>
+</li>
+<li><p>koi-utf、koi-win、win-utf这三个文件都是与编码转换映射相关的配置文件，用来将一种编码转换成另一种编码</p>
+</li>
+<li><p>html:存放nginx自带的两个静态的html页面</p>
+<ul>
+<li>50x.html:访问失败后的失败页面</li>
+<li>index.html:成功访问的默认首页</li>
+</ul>
+</li>
+<li><p>logs:记录入门的文件，当nginx服务器启动后，这里面会有 access.log error.log 和nginx.pid三个文件出现。</p>
+</li>
+<li><p>sbin:是存放执行程序文件nginx</p>
+<ul>
+<li>nginx是用来控制Nginx的启动和停止等相关的命令。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-Nginx-服务器启停命令"><a href="#2-2-Nginx-服务器启停命令" class="headerlink" title="2.2 Nginx 服务器启停命令"></a>2.2 Nginx 服务器启停命令</h2><p>Nginx安装完成后，接下来我们要学习的是如何启动、重启和停止Nginx的服务。</p>
+<p>对于Nginx的启停在linux系统中也有很多种方式，介绍两种方式：</p>
+<ul>
+<li>Nginx服务的信号控制</li>
+<li>Nginx的命令行控制</li>
+</ul>
+<h3 id="2-2-1-Nginx服务的信号控制"><a href="#2-2-1-Nginx服务的信号控制" class="headerlink" title="2.2.1 Nginx服务的信号控制"></a>2.2.1 Nginx服务的信号控制</h3><p>前面在提到Nginx的高性能，其实也和它的架构模式有关。Nginx默认采用的是多进程的方式来工作的，当将Nginx启动后，我们通过<code>ps -ef | grep nginx</code>命令可以查看到如下内容：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170340002.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170340002.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>从上图中可以看到,Nginx后台进程中包含一个master进程和多个worker进程，master进程主要用来管理worker进程，包含接收外界的信息，并将接收到的信号发送给各个worker进程，监控worker进程的状态，当worker进程出现异常退出后，会自动重新启动新的worker进程。</p>
+<p>而worker进程则是专门用来处理用户请求的，各个worker进程之间是平等的并且相互独立，处理请求的机会也是一样的。nginx的进程模型，我们可以通过下图来说明下：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581444603231.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581444603231.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>我们现在作为管理员，只需要通过给master进程发送信号就可以来控制Nginx,这个时候我们需要有两个前提条件，一个是要操作的master进程，一个是信号。</p>
+<p>（1）要想操作Nginx的master进程，就需要获取到master进程的进程号ID。获取方式简单介绍两个，</p>
+<ul>
+<li>方式一：通过<code>ps -ef | grep nginx</code>；</li>
+<li>方式二：在讲解nginx的<code>./configure</code>的配置参数的时候，有一个参数是<code>--pid-path=PATH</code>默认是<code>/usr/local/nginx/logs/nginx.pid</code>,所以可以通过查看该文件来获取nginx的master进程ID.</li>
+</ul>
+<p>（2）信号</p>
+<table>
+<thead>
+<tr>
+<th align="left">信号</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TERM&#x2F;INT</td>
+<td align="left">立即关闭整个服务</td>
+</tr>
+<tr>
+<td align="left">QUIT</td>
+<td align="left">“优雅”地关闭整个服务</td>
+</tr>
+<tr>
+<td align="left">HUP</td>
+<td align="left">重读配置文件并使用服务对新配置项生效</td>
+</tr>
+<tr>
+<td align="left">USR1</td>
+<td align="left">重新打开日志文件，可以用来进行日志切割</td>
+</tr>
+<tr>
+<td align="left">USR2</td>
+<td align="left">平滑升级到最新版的nginx</td>
+</tr>
+<tr>
+<td align="left">WINCH</td>
+<td align="left">所有子进程不在接收处理新连接，相当于给work进程发送QUIT指令</td>
+</tr>
+</tbody></table>
+<p>调用命令为<code>kill -signal PID</code></p>
+<p>signal:即为信号；PID即为获取到的master线程ID</p>
+<ol>
+<li>发送TERM&#x2F;INT信号给master进程，会将Nginx服务立即关闭。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kill -TERM PID</span><br><span class="line">kill -TERM `cat /usr/local/nginx/logs/nginx.pid`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">kill -INT PID</span><br><span class="line">kill -INT `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>发送QUIT信号给master进程，master进程会控制所有的work进程不再接收新的请求，等所有请求处理完后，在把进程都关闭掉。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT PID</span><br><span class="line"></span><br><span class="line">kill -TERM `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>发送HUP信号给master进程，master进程会把控制旧的work进程不再接收新的请求，等处理完请求后将旧的work进程关闭掉，然后根据nginx的配置文件重新启动新的work进程</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -HUP PID</span><br><span class="line"></span><br><span class="line">kill -TERM `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>发送USR1信号给master进程，告诉Nginx重新开启日志文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -USR1 PID</span><br><span class="line"></span><br><span class="line">kill -TERM `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>发送USR2信号给master进程，告诉master进程要平滑升级，这个时候，会重新开启对应的master进程和work进程，整个系统中将会有两个master进程，并且新的master进程的PID会被记录在<code>/usr/local/nginx/logs/nginx.pid</code>而之前的旧的master进程PID会被记录在<code>/usr/local/nginx/logs/nginx.pid.oldbin</code>文件中，接着再次发送QUIT信号给旧的master进程，让其处理完请求后再进行关闭</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -USR2 PID</span><br><span class="line"></span><br><span class="line">kill -USR2 `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT PID</span><br><span class="line"></span><br><span class="line">kill -QUIT `cat /usr/local/nginx/logs/nginx.pid.oldbin`</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1586368250085.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1586368250085.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<ol>
+<li>发送WINCH信号给master进程,让master进程控制不让所有的work进程在接收新的请求了，请求处理完后关闭work进程。注意master进程不会被关闭掉</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -WINCH PID</span><br><span class="line"></span><br><span class="line">kill -WINCH`cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-Nginx的命令行控制"><a href="#2-2-2-Nginx的命令行控制" class="headerlink" title="2.2.2 Nginx的命令行控制"></a>2.2.2 Nginx的命令行控制</h3><p>此方式是通过Nginx安装目录下的sbin下的可执行文件nginx来进行Nginx状态的控制，我们可以通过<code>nginx -h</code>来查看都有哪些参数可以用：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170130395.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111170130395.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-?和-h:显示帮助信息</span><br><span class="line">-v:打印版本号信息并退出</span><br><span class="line">-V:打印版本号信息和配置信息并退出</span><br><span class="line">-t:测试nginx的配置文件语法是否正确并退出</span><br><span class="line">-T:测试nginx的配置文件语法是否正确并列出用到的配置文件信息然后退出</span><br><span class="line">-q:在配置测试期间禁止显示非错误消息</span><br><span class="line">-s:signal信号，后面可以跟 ：</span><br><span class="line"> stop[快速关闭，类似于TERM/INT信号的作用]</span><br><span class="line"> quit[优雅的关闭，类似于QUIT信号的作用] </span><br><span class="line"> reopen[重新打开日志文件类似于USR1信号的作用] </span><br><span class="line"> reload[类似于HUP信号的作用]</span><br><span class="line">-p:prefix，指定Nginx的prefix路径，(默认为: /usr/local/nginx/)</span><br><span class="line">-c:filename,指定Nginx的配置文件路径,(默认为: conf/nginx.conf)</span><br><span class="line">-g:用来补充Nginx配置文件，向Nginx服务指定启动时应用全局的配置</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Nginx-服务器版本升级和新增模块"><a href="#2-3-Nginx-服务器版本升级和新增模块" class="headerlink" title="2.3 Nginx 服务器版本升级和新增模块"></a>2.3 Nginx 服务器版本升级和新增模块</h2><p>如果想对Nginx的版本进行更新，或者要应用一些新的模块，最简单的做法就是停止当前的Nginx服务，然后开启新的Nginx服务。但是这样会导致在一段时间内，用户是无法访问服务器。为了解决这个问题，我们就需要用到Nginx服务器提供的平滑升级功能。这个也是Nginx的一大特点，使用这种方式，就可以使Nginx在7*24小时不间断的提供服务了。接下来我们分析下需求：</p>
+<p>需求：Nginx的版本最开始使用的是Nginx-1.18.0,由于服务升级，需要将Nginx的版本升级到Nginx-1.20.1,要求Nginx不能中断提供服务。</p>
+<p>为了应对上述的需求，这里我们给大家提供两种解决方案:</p>
+<ul>
+<li>方案一:使用Nginx服务信号完成Nginx的升级</li>
+<li>方案二:使用Nginx安装目录的make命令完成升级</li>
+</ul>
+<h3 id="2-3-1-环境准备"><a href="#2-3-1-环境准备" class="headerlink" title="2.3.1 环境准备"></a>2.3.1 环境准备</h3><p>（1）先准备两个版本的Nginx分别是 1.18.0和1.20.1</p>
+<p>（2）使用Nginx源码安装的方式将1.18.0版本安装成功并正确访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root/nginx-1.18.0</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>（3）将Nginx1.20.1进行参数配置和编译，不需要进行安装。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root/nginx-1.20.1</span><br><span class="line">./configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-2-使用Nginx服务信号进行升级"><a href="#2-3-2-使用Nginx服务信号进行升级" class="headerlink" title="2.3.2 使用Nginx服务信号进行升级"></a>2.3.2 使用Nginx服务信号进行升级</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>第一步:将1.18.0版本的sbin目录下的nginx进行备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">mv nginx nginx-old</span><br></pre></td></tr></table></figure>
+
+<p>第二步:将Nginx1.16.1安装目录编译后的objs目录下的nginx文件，拷贝到原来<code>/usr/local/nginx/sbin</code>目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/nginx-1.20.1/objs</span><br><span class="line">cp nginx /usr/local/nginx/sbin</span><br></pre></td></tr></table></figure>
+
+<p>第三步:发送信号USR2给Nginx的1.18.0版本对应的master进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -USR2 `cat /usr/local/nginx/logs/nginx.pid`</span><br></pre></td></tr></table></figure>
+
+<p>第四步:发送信号QUIT给Nginx的1.18.0版本对应的master进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT `more /usr/local/nginx/logs/nginx.pid.oldbin`</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111171440253.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<h3 id="2-3-3-使用Nginx安装目录的make命令完成升级"><a href="#2-3-3-使用Nginx安装目录的make命令完成升级" class="headerlink" title="2.3.3 使用Nginx安装目录的make命令完成升级"></a>2.3.3 使用Nginx安装目录的make命令完成升级</h3><p>第一步:将1.18.0版本的sbin目录下的nginx进行备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">mv nginx nginx-old</span><br></pre></td></tr></table></figure>
+
+<p>第二步:将Nginx1.20.1安装目录编译后的objs目录下的nginx文件，拷贝到原来<code>/usr/local/nginx/sbin</code>目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/nginx-1.20.1/objs</span><br><span class="line">cp nginx /usr/local/nginx/sbin</span><br></pre></td></tr></table></figure>
+
+<p>第三步:进入到安装目录，执行<code>make upgrade</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/nginx-1.20.1/</span><br><span class="line">make upgrade</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172704225.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172704225.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>第四步:查看是否更新成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nginx -v</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172724686.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111172724686.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>在整个过程中，其实Nginx是一直对外提供服务的。并且当Nginx的服务器启动成功后，我们是可以通过浏览器进行直接访问的，同时我们可以通过更改html目录下的页面来修改我们在页面上所看到的内容</p>
+<h2 id="2-4-Nginx-核心配置文件结构"><a href="#2-4-Nginx-核心配置文件结构" class="headerlink" title="2.4 Nginx 核心配置文件结构"></a>2.4 Nginx 核心配置文件结构</h2><h3 id="2-4-1-全局块"><a href="#2-4-1-全局块" class="headerlink" title="2.4.1 全局块"></a>2.4.1 全局块</h3><p>Nginx的核心配置文件默认是放在<code>/usr/local/nginx/conf/nginx.conf</code>，介绍下nginx.conf的内容和基本配置方法。</p>
+<p>读取Nginx自带的Nginx配置文件，我们将其中的注释部分删除掉后，就剩下下面内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf/</span><br><span class="line"></span><br><span class="line"># 清除所有空行和注释</span><br><span class="line">cat nginx.conf | grep -v &quot;#&quot; | grep -v &quot;^$&quot; &gt; nginx2.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单小结下:</p>
+<ul>
+<li>nginx.conf配置文件中默认有三大块：全局块、events块、http块</li>
+<li>http块中可以配置多个server块，每个server块又可以配置多个location块。</li>
+</ul>
+<p>（1）user指令</p>
+<p>user:用于配置运行Nginx服务器的worker进程的用户和用户组。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">user user [group]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">nobody</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块</td>
+</tr>
+</tbody></table>
+<p>该属性也可以在编译的时候指定，语法如下<code>./configure --user=user --group=group</code>,如果两个地方都进行了设置，最终生效的是配置文件中的配置。</p>
+<p>该指令的使用步骤:</p>
+<p>1）设置一个用户信息”www”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;1i user gudu;&quot; nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111180913679.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111180913679.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>2）创建一个用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd gudu</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181001627.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181001627.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>3）修改user属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user gudu;</span><br></pre></td></tr></table></figure>
+
+<p>4）创建<code>/root/html/index.html</code>页面，添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/html/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt; /root/html/index.heml</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;em&gt;I am gudu&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>5）修改nginx.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    root   /root/html;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6）测试启动访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">页面会报403拒绝访问的错误</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181505488.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181505488.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>7）分析原因</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为当前用户没有访问/root/html目录的权限</span><br></pre></td></tr></table></figure>
+
+<p>8）将文件创建到 <code>/home/gudu/html/index.html</code>,修改配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root   /home/gudu/html;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>9）再次测试启动访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">能正常访问。</span><br></pre></td></tr></table></figure>
+
+<p>综上所述，使用user指令可以指定启动运行工作进程的用户及用户组，这样对于系统的权限访问控制的更加精细，也更加安全。</p>
+<p>（2）work process指令</p>
+<p>master_process:用来指定是否开启工作进程。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">master_process on|off;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">master_process on;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块</td>
+</tr>
+</tbody></table>
+<p>worker_processes:用于配置Nginx生成工作进程的数量，这个是Nginx服务器实现并发处理服务的关键所在。理论上来说workder process的值越大，可以支持的并发处理量也越多，但事实上这个值的设定是需要受到来自服务器自身的限制，建议将该值和服务器CPU的内核数保存一致。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">worker_processes num&#x2F;auto;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块</td>
+</tr>
+</tbody></table>
+<p>如果将worker_processes设置成2，则会看到如下内容:</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181702718.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/image-20211111181702718.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>（3）其他指令</p>
+<p>1）daemon：设定Nginx是否以守护进程的方式启动。</p>
+<p>守护式进程是linux后台执行的一种服务进程，特点是独立于控制终端，不会随着终端关闭而停止。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">daemon on|off;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">daemon on;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块</td>
+</tr>
+</tbody></table>
+<p>2）pid:用来配置Nginx当前master进程的进程号ID存储的文件路径。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">pid file;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">默认为:&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;logs&#x2F;nginx.pid</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块</td>
+</tr>
+</tbody></table>
+<p>该属性可以通过<code>./configure --pid-path=PATH</code>来指定</p>
+<p>error_log:用来配置Nginx的错误日志存放路径</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">error_log file [日志级别];</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">error_log logs&#x2F;error.log error;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">全局块、http、server、location</td>
+</tr>
+</tbody></table>
+<p>该属性可以通过<code>./configure --error-log-path=PATH</code>来指定</p>
+<p>其中日志级别的值有：debug|info|notice|warn|error|crit|alert|emerg，翻译过来为试|信息|通知|警告|错误|临界|警报|紧急，这块建议大家设置的时候不要设置成info以下的等级，因为会带来大量的磁盘I&#x2F;O消耗，影响Nginx的性能。</p>
+<p>3）include:用来引入其他配置文件，使Nginx的配置更加灵活</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">include file;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">any</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-2-events块"><a href="#2-4-2-events块" class="headerlink" title="2.4.2 events块"></a>2.4.2 events块</h3><p>（1）accept_mutex:用来设置Nginx网络连接序列化</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">accept_mutex on|off;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">accept_mutex on;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">events</td>
+</tr>
+</tbody></table>
+<p>这个配置主要可以用来解决常说的”惊群”问题。大致意思是在某一个时刻，客户端发来一个请求连接，Nginx后台是以多进程的工作模式，也就是说有多个worker进程会被同时唤醒，但是最终只会有一个进程可以获取到连接，如果每次唤醒的进程数目太多，就会影响Nginx的整体性能。</p>
+<p>如果将上述值设置为on(开启状态)，将会对多个Nginx进程接收连接进行序列号，一个个来唤醒接收，就防止了多个进程对连接的争抢。</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581566971955.png"><img src="https://gitee.com/wei_cunqi/images/raw/master/nginx/2/1581566971955.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>（2）multi_accept:用来设置是否允许同时接收多个网络连接</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">multi_accept on|off;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">multi_accept off;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">events</td>
+</tr>
+</tbody></table>
+<p>如果multi_accept被禁止了，nginx一个工作进程只能同时接受一个新的连接。否则，一个工作进程可以同时接受所有的新连接</p>
+<p>（3）worker_connections：用来配置单个worker进程最大的连接数</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">worker_connections number;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">worker_commections 512;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">events</td>
+</tr>
+</tbody></table>
+<p>这里的连接数不仅仅包括和前端用户建立的连接数，而是包括所有可能的连接数。另外，number值不能大于操作系统支持打开的最大文件句柄数量。</p>
+<p>（4）use:用来设置Nginx服务器选择哪种事件驱动来处理网络消息。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">use method;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">根据操作系统定</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">events</td>
+</tr>
+</tbody></table>
+<p>注意：此处所选择事件处理模型是Nginx优化部分的一个重要内容，method的可选值有select&#x2F;poll&#x2F;epoll&#x2F;kqueue等，之前在准备centos环境的时候，我们强调过要使用linux内核在2.6以上，就是为了能使用epoll函数来优化Nginx。</p>
+<p>另外这些值的选择，我们也可以在编译的时候使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--with-select_module</span><br><span class="line">--without-select_module</span><br><span class="line">--with-poll_module</span><br><span class="line">--without-poll_module</span><br></pre></td></tr></table></figure>
+
+<p>来设置是否需要将对应的事件驱动模块编译到Nginx的内核。</p>
+<p><strong>events指令配置实例</strong></p>
+<p>打开Nginx的配置文件 nginx.conf,添加如下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">events&#123;</span><br><span class="line">    accept_mutex on;</span><br><span class="line">    multi_accept on;</span><br><span class="line">    worker_commections 1024;</span><br><span class="line">    use epoll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./nginx -t</span><br><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-3-http块"><a href="#2-4-3-http块" class="headerlink" title="2.4.3 http块"></a>2.4.3 http块</h3><p>（1）定义MIME-Type</p>
+<p>我们都知道浏览器中可以显示的内容有HTML、XML、GIF等种类繁多的文件、媒体等资源，浏览器为了区分这些资源，就需要使用MIME Type。所以说MIME Type是网络资源的媒体类型。Nginx作为web服务器，也需要能够识别前端请求的资源类型。</p>
+<p>在Nginx的配置文件中，默认有两行配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include mime.types;</span><br><span class="line">default_type application/octet-stream;</span><br></pre></td></tr></table></figure>
+
+<p>default_type:用来配置Nginx响应前端请求默认的MIME类型。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">default_type mime-type;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">default_type text&#x2F;plain；</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">http、server、location</td>
+</tr>
+</tbody></table>
+<p>在default_type之前还有一句<code>include mime.types</code>,include之前我们已经介绍过，相当于把mime.types文件中MIMT类型与相关类型文件的文件后缀名的对应关系加入到当前的配置文件中。</p>
+<p><strong>举例说明：</strong></p>
+<p>有些时候请求某些接口的时候需要返回指定的文本字符串或者json字符串，如果逻辑非常简单或者干脆是固定的字符串，那么可以使用nginx快速实现，这样就不用编写程序响应请求了，可以减少服务器资源占用并且响应性能非常快。</p>
+<p><strong>如何实现：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location /get_text &#123;</span><br><span class="line">    #这里也可以设置成text/plain</span><br><span class="line">    default_type text/html;</span><br><span class="line">    return 200 &quot;This is nginx&#x27;s text&quot;;</span><br><span class="line">&#125;</span><br><span class="line">location /get_json&#123;</span><br><span class="line">    default_type application/json;</span><br><span class="line">    return 200 &#x27;&#123;&quot;name&quot;:&quot;TOM&quot;,&quot;age&quot;:18&#125;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）自定义服务日志</p>
+<p>Nginx中日志的类型分access.log、error.log。</p>
+<ul>
+<li>access.log:用来记录用户所有的访问请求。</li>
+<li>error.log:记录nginx本身运行时的错误信息，不会记录用户的访问请求。</li>
+</ul>
+<p>Nginx服务器支持对服务日志的格式、大小、输出等进行设置，需要使用到两个指令，分别是access_log和log_format指令。</p>
+<p>1）access_log:用来设置用户访问日志的相关属性。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">access_log path[format[buffer&#x3D;size]]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">access_log logs&#x2F;access.log combined;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left"><code>http</code>, <code>server</code>, <code>location</code></td>
+</tr>
+</tbody></table>
+<p>2）log_format:用来指定日志的输出格式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">log_format name [escape&#x3D;default|json|none] string….;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">log_format combined “…”;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">http</td>
+</tr>
+</tbody></table>
+<p>（3）其他配置指令</p>
+<p>1）sendfile:用来设置Nginx服务器是否使用sendfile()传输文件，该属性可以大大提高Nginx处理静态资源的性能</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">sendfile on|off；</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">sendfile off;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">http、server、location</td>
+</tr>
+</tbody></table>
+<p>2）keepalive_timeout:用来设置长连接的超时时间。</p>
+<p>我们都知道HTTP是一种无状态协议，客户端向服务端发送一个TCP请求，服务端响应完毕后断开连接。</p>
+<p>如何客户端向服务端发送多个请求，每个请求都需要重新创建一次连接，效率相对来说比较多，使用keepalive模式，可以告诉服务器端在处理完一个请求后保持这个TCP连接的打开状态，若接收到来自这个客户端的其他请求，服务端就会利用这个未被关闭的连接，而不需要重新创建一个新连接，提升效率，但是这个连接也不能一直保持，这样的话，连接如果过多，也会是服务端的性能下降，这个时候就需要我们进行设置其的超时时间。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">keepalive_timeout time;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">keepalive_timeout 75s;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">http、server、location</td>
+</tr>
+</tbody></table>
+<p>3）keepalive_requests:用来设置一个keep-alive连接使用的次数。</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">keepalive_requests number;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">默认值</td>
+<td align="left">keepalive_requests 100;</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">http、server、location</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-4-server块和location块"><a href="#2-4-4-server块和location块" class="headerlink" title="2.4.4 server块和location块"></a>2.4.4 server块和location块</h3><p>server块和location块都是我们要重点讲解和学习的内容，因为我们后面会对Nginx的功能进行详细讲解，所以这块内容就放到静态资源部署的地方给大家详细说明。</p>
+<p>主要来认识下Nginx默认给的nginx.conf中的相关内容，以及server块与location块在使用的时候需要注意的一些内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    error_page   500 502 503 504 404  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>nginx配置</div>
+      <div>http://example.com/lyyy/nginx配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LYYY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/lyyy/docker%E9%95%9C%E5%83%8F%E7%9B%B8%E5%85%B3/" title="docker镜像相关">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker镜像相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/lyyy/docker%E6%8C%82%E8%BD%BDnginx%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/" title="docker挂载nginx失败解决">
+                        <span class="hidden-mobile">docker挂载nginx失败解决</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       ❄ 咖啡的苦与甜，完全在于喝的人 ❄ 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
